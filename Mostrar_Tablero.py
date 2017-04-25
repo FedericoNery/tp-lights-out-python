@@ -1,10 +1,18 @@
 import operator
-
-def imprimo_linea(linea_acumulada):
-    print(linea_acumulada)
-    return(0)
-
-
+import string
+def imprimir_Primer_Fila(dimension):
+    if(dimension==5):
+        print('A','B','C','D','E')
+    elif(dimension==6):
+        print('A', 'B', 'C', 'D','E','F')
+    elif(dimension==7):
+        print('A', 'B', 'C', 'D', 'E','F','G')
+    elif(dimension==8):
+        print('A', 'B', 'C', 'D', 'E','F','G','H')
+    elif(dimension==9):
+        print('A', 'B', 'C', 'D', 'E','F','G','H','I')
+    elif(dimension==10):
+        print('A', 'B', 'C', 'D', 'E','F','G','H','I','J')
 
 def imprimir_Tablero(resultado,dimension_tablero):
     """
@@ -19,14 +27,16 @@ def imprimir_Tablero(resultado,dimension_tablero):
     recorrido_columnas=1
     Diccionario=resultado
     dimension=dimension_tablero
+    imprimir_Primer_Fila(dimension)
     while(recorrido_filas<=dimension):
+
         while (recorrido_columnas<=dimension):#Columna 1 Columna 2 Columna 3
             fila=str(recorrido_filas)
             columna=chr(recorrido_columnas+64)
             elemento=Diccionario[(columna+fila)]
             linea_acumulada.append(elemento)
             if(recorrido_columnas==dimension):
-                print(imprimo_linea(linea_acumulada))
+                print(linea_acumulada)
             #print(Diccionario[(columna+fila)])#Imprimo el elemento del diccionario con clave A1
             recorrido_columnas=recorrido_columnas+1#Paso a la segunda columna
         linea_acumulada=[]
@@ -68,7 +78,6 @@ def modo_Predeterminado_LV1(dimension_tablero):
         columna=chr(columna)
 
     #print(str(ultima_fila_numero)+ultima_columna_letra)
-
     return(Diccionario)
 
 dimension_tablero=5
