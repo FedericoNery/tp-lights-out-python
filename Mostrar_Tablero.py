@@ -1,34 +1,38 @@
 import operator
+
+def imprimo_linea(linea_acumulada):
+    print(linea_acumulada)
+    return(0)
+
+
+
 def imprimir_Tablero(resultado,dimension_tablero):
-    x=0
-    y=0
-    fila=1
-    columna='A'
+    """
+       1 es A  6 es F
+       2 es B  7 es G
+       3 es C  8 es H
+       4 es D  9 es I
+       5 es E  10 es J
+       """
+    linea_acumulada=[]
     recorrido_filas=1
     recorrido_columnas=1
-    """
-    1 es A  6 es F
-    2 es B  7 es G
-    3 es C  8 es H
-    4 es D  9 es I
-    5 es E  10 es J
-    """
-    while ():
-        while (recorrido_filas<=dimension_tablero):
-            print(resultado[columna+str(fila)]),
-            columna=chr(ord(columna)+1)
-        recorrido_filas=1
-        columna='A'
-        print("\n")
+    Diccionario=resultado
+    dimension=dimension_tablero
+    while(recorrido_filas<=dimension):
+        while (recorrido_columnas<=dimension):#Columna 1 Columna 2 Columna 3
+            fila=str(recorrido_filas)
+            columna=chr(recorrido_columnas+64)
+            elemento=Diccionario[(columna+fila)]
+            linea_acumulada.append(elemento)
+            if(recorrido_columnas==dimension):
+                print(imprimo_linea(linea_acumulada))
+            #print(Diccionario[(columna+fila)])#Imprimo el elemento del diccionario con clave A1
+            recorrido_columnas=recorrido_columnas+1#Paso a la segunda columna
+        linea_acumulada=[]
+        recorrido_filas=recorrido_filas+1
+        recorrido_columnas=1
 
-    while resultado[]
-    print(resultado[]),
-    for i in dimension_tablero:
-        print(chr(64+i))
-    for i in dimension_tablero:
-        print(i)
-
-    fila_0= " A B C D E "
     """
         x0  x1  x2  x3  x4  x5  x6
     y0      A   B   C   D   E   F
@@ -47,9 +51,8 @@ def imprimir_Tablero(resultado,dimension_tablero):
 
 
     """
-    print()
-
     return (0)
+
 def modo_Predeterminado_LV1(dimension_tablero):
     Diccionario={}
     ultima_fila_numero=dimension_tablero
@@ -70,5 +73,7 @@ def modo_Predeterminado_LV1(dimension_tablero):
 
 dimension_tablero=5
 Diccionario=modo_Predeterminado_LV1(dimension_tablero)
-resultado = sorted(Diccionario.items(), key=operator.itemgetter(0))
-print (resultado)
+#resultado = sorted(Diccionario.items(), key=operator.itemgetter(0))
+#print (resultado)
+#print(Diccionario)
+imprimir_Tablero(Diccionario,dimension_tablero)
