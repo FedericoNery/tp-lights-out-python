@@ -1,5 +1,13 @@
 import operator
 import string
+def sacarCaracteresResiduales(linea_acumulada):
+    linea_final=[]
+    for i in linea_acumulada:
+        for k in linea_final:
+            linea_final.append(linea_acumulada)
+
+    print(linea_acumulada)
+
 def imprimir_Primer_Fila(dimension):
     if(dimension==5):
         print('A','B','C','D','E')
@@ -36,6 +44,7 @@ def imprimir_Tablero(resultado,dimension_tablero):
             elemento=Diccionario[(columna+fila)]
             linea_acumulada.append(elemento)
             if(recorrido_columnas==dimension):
+                linea_acumulada=sacarCaracteresResiduales(linea_acumulada)
                 print(linea_acumulada)
             #print(Diccionario[(columna+fila)])#Imprimo el elemento del diccionario con clave A1
             recorrido_columnas=recorrido_columnas+1#Paso a la segunda columna
