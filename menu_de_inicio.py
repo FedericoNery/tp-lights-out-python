@@ -14,10 +14,6 @@ def mensaje_de_bienvenida():
     print("| L L L   U U U    C C C  E E E   S S S      F       U U U   E E E  R    R  A       A     |")
     print("|- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -|\n")
 
-
-
-
-
 def menu_de_inicio():
     """ Interfaz de inicio del juego para seleccionar entre modo aleatorio o predeterminado. Dentro del modo
     aleatorio se podrá seleccionar la dimension del tablero"""
@@ -74,5 +70,5 @@ def menu_de_inicio():
             validacion=False
             print ("Error")
     return (modo,dimension_tablero)
-menu_de_inicio()
+
 
