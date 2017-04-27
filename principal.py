@@ -1,5 +1,5 @@
 import menu_de_inicio
+
 def principal():
-    menu_de_inicio()
-    return (0)
+    menu_de_inicio.menu_de_inicio()
 principal()
