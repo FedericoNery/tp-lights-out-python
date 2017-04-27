@@ -1,18 +1,12 @@
 import operator
 import string
 def sacarCaracteresResiduales(linea_acumulada):
-    """t = []
-    for i in range(fila):
-        t.append([0] * columna)
-
-    for i in t:
-        print
-        i"""
-
-    linea_final=[]
+    string_luces_on_off = ""
+    largo = len(linea_acumulada)
     for i in linea_acumulada:
-        linea_final.append([0]*columna)
-    print(linea_final)
+        string_luces_on_off = string_luces_on_off + i +" "
+
+    return (string_luces_on_off)
 
 def imprimir_Primer_Fila(dimension):
     if(dimension==5):
@@ -52,7 +46,7 @@ def imprimir_Tablero(resultado,dimension_tablero):
             if(recorrido_columnas==dimension):
                 sacarCaracteresResiduales(linea_acumulada)
                # linea_acumulada=sacarCaracteresResiduales(linea_acumulada)
-               # print(linea_acumulada)
+                print(sacarCaracteresResiduales(linea_acumulada))
             #print(Diccionario[(columna+fila)])#Imprimo el elemento del diccionario con clave A1
             recorrido_columnas=recorrido_columnas+1#Paso a la segunda columna
         linea_acumulada=[]
