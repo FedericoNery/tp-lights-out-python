@@ -6,7 +6,7 @@ def mensaje_de_bienvenida():
     print("| B B B B  I   E E E  N  N  N   V   v   E E E  N  N  N  I  D     D  O     O       A   A   |")
     print("| B     B  I   E      N   N N    V V    E      N   N N  I  D     D  O     O      A A A A  |")
     print("| B B B B  I   E E E  N    NN     V     E E E  N    NN  I  D D D     O O O      A       A |")
-
+    print("|                                                                                         |")
     print("| L      U     U   C C C  E E E   S S S      F F F  U     U  E E E  R R R       A         |")
     print("| L      U     U  C       E      S           F      U     U  E      R    R     A A        |")
     print("| L      U     U  C       E E E   S S S      F F F  U     U  E E E  R R R     A   A       |")
