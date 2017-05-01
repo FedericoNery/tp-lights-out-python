@@ -19,7 +19,7 @@ def principal():
         if (i == 'O'):
             lucesRestantes = lucesRestantes + 1
             gananivel = False
-    while((movimientosRestantes>0) and (gananivel==False) and (lucesRestantes>0)):
+    while((movimientosRestantes>=0) and (gananivel==False) and (lucesRestantes>0)):
         Casilla=ingreso_de_casilla.validacionIngresoDeCasillero(modoYDimension[1])
         diccionario_tablero=modificadorTablero.modificoTablero(diccionario_tablero,Casilla)
         mostrar_tablero.imprimir_Tablero(diccionario_tablero, modoYDimension[1])
@@ -30,9 +30,17 @@ def principal():
                 lucesRestantesNuevas=lucesRestantesNuevas+1
                 gananivel=False
         lucesRestantes=lucesRestantesNuevas
+        lucesRestantesNuevas=0
         if(lucesRestantes==0):
             gananivel=True
-
+    if(gananivel==True):
+        print("""
+         G G G      A     NN    N   O O O      E E E  L        NN    N  I  V       V  E E E  L
+        G          A A    N N   N  O     O     E      L        N N   N  I   V     V   E      L
+        G   G G   A   A   N  N  N  O     O     E E E  L        N  N  N  I    V   V    E E E  L
+        G     G  A A A A  N   N N  O     O     E      L        N   N N  I     V V     E      L
+         G G G  A       A N    NN   O O O      E E E  L L L    N    NN  I      V      E E E  L L L
+        """)
     if(movimientosRestantes==0):
         print("""
         P P P   E E E  R R R    D D D   I   S S S  T T T  E E E
