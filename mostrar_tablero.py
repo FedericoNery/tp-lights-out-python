@@ -10,17 +10,17 @@ def sacarCaracteresResiduales(linea_acumulada):
 
 def imprimir_Primer_Fila(dimension):
     if(dimension==5):
-        print('A','B','C','D','E')
+        print(' ','A','B','C','D','E')
     elif(dimension==6):
-        print('A', 'B', 'C', 'D','E','F')
+        print(' ','A', 'B', 'C', 'D','E','F')
     elif(dimension==7):
-        print('A', 'B', 'C', 'D', 'E','F','G')
+        print(' ','A', 'B', 'C', 'D', 'E','F','G')
     elif(dimension==8):
-        print('A', 'B', 'C', 'D', 'E','F','G','H')
+        print(' ','A', 'B', 'C', 'D', 'E','F','G','H')
     elif(dimension==9):
-        print('A', 'B', 'C', 'D', 'E','F','G','H','I')
+        print(' ','A', 'B', 'C', 'D', 'E','F','G','H','I')
     elif(dimension==10):
-        print('A', 'B', 'C', 'D', 'E','F','G','H','I','J')
+        print(' ','A', 'B', 'C', 'D', 'E','F','G','H','I','J')
 
 def imprimir_Tablero(resultado,dimension_tablero):
     """
@@ -46,7 +46,7 @@ def imprimir_Tablero(resultado,dimension_tablero):
             if(recorrido_columnas==dimension):
                 sacarCaracteresResiduales(linea_acumulada)
                # linea_acumulada=sacarCaracteresResiduales(linea_acumulada)
-                print(sacarCaracteresResiduales(linea_acumulada))
+                print(str(recorrido_filas)+" "+sacarCaracteresResiduales(linea_acumulada))
             #print(Diccionario[(columna+fila)])#Imprimo el elemento del diccionario con clave A1
             recorrido_columnas=recorrido_columnas+1#Paso a la segunda columna
         linea_acumulada=[]
