@@ -23,4 +23,3 @@ def validacionIngresoDeCasillero(dimension_tablero):
         else:
             validacion= False
             print ("Error ")
-validacionIngresoDeCasillero(5)
