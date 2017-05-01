@@ -25,7 +25,3 @@ def generarTablerosConLuces(dimension_tablero):
 
     return (Diccionario)
 
-
-dimension_tablero=6
-Diccionario=generarTablerosConLuces(dimension_tablero)
-print(imprimir_Tablero(Diccionario,dimension_tablero))
