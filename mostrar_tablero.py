@@ -45,33 +45,12 @@ def imprimir_Tablero(resultado,dimension_tablero):
             linea_acumulada.append(elemento)
             if(recorrido_columnas==dimension):
                 sacarCaracteresResiduales(linea_acumulada)
-               # linea_acumulada=sacarCaracteresResiduales(linea_acumulada)
                 print(str(recorrido_filas)+" "+sacarCaracteresResiduales(linea_acumulada))
-            #print(Diccionario[(columna+fila)])#Imprimo el elemento del diccionario con clave A1
             recorrido_columnas=recorrido_columnas+1#Paso a la segunda columna
         linea_acumulada=[]
         recorrido_filas=recorrido_filas+1
         recorrido_columnas=1
-
-    """
-        x0  x1  x2  x3  x4  x5  x6
-    y0      A   B   C   D   E   F
-
-    y1  1|
-
-    y2  2|
-
-    y3  3|
-
-    y4  4|
-
-    y5  5|
-
-    y6
-
-
-    """
-    return (0)
+    return("")
 
 def modo_Predeterminado_LV1(dimension_tablero):
     Diccionario={}
@@ -86,13 +65,4 @@ def modo_Predeterminado_LV1(dimension_tablero):
         fila=1
         columna=ord(columna)+1
         columna=chr(columna)
-
-    #print(str(ultima_fila_numero)+ultima_columna_letra)
     return(Diccionario)
-
-dimension_tablero=5
-Diccionario=modo_Predeterminado_LV1(dimension_tablero)
-#resultado = sorted(Diccionario.items(), key=operator.itemgetter(0))
-#print (resultado)
-#print(Diccionario)
-imprimir_Tablero(Diccionario,dimension_tablero)
