@@ -54,7 +54,7 @@ def menu_de_inicio():
                 sub_valor=str(input("Ingrese el numero correspondiente a la dimension del tablero en la que desea jugar "))
                 if((sub_valor=='5') or (sub_valor=='6')or (sub_valor == '7') or (sub_valor == '8') or (sub_valor == '9')or (sub_valor=='10')):
                     sub_validacion=True
-                    dimension_tablero=sub_valor
+                    dimension_tablero=int(sub_valor)
                     print ("Se determino jugar al modo aleatorio "+",la dimension sera de: "+str(dimension_tablero)+" x "+str(dimension_tablero))
                 else:
                     sub_validacion=False
