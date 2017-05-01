@@ -27,10 +27,4 @@ def modificoTablero(Diccionario,Casilla):
     return (Diccionario)
 
 
-dimension_tablero=6
-diccionario=generarTablerosConLuces(dimension_tablero)
-imprimir_Tablero(diccionario,dimension_tablero)
-Casilla=validacionIngresoDeCasillero(dimension_tablero)
-diccionario=modificoTablero(diccionario,Casilla)
-imprimir_Tablero(diccionario,dimension_tablero)
 
