@@ -12,28 +12,32 @@ def modificoTablero(Diccionario,Casilla):
         Diccionario[Casilla]='O'
     """ Casilla a la izquierda de la Central """
     casillaALaIzquierda= chr(ord(columnaCasillaCentral)-1)+filaCasillaCentral
-    if(Diccionario.get(casillaALaIzquierda,[])=='O'):
-        Diccionario[casillaALaIzquierda]='.'
-    else:
-        Diccionario[casillaALaIzquierda]='O'
+    if(casillaALaIzquierda in Diccionario):
+        if(Diccionario.get(casillaALaIzquierda,[])=='O'):
+            Diccionario[casillaALaIzquierda]='.'
+        else:
+            Diccionario[casillaALaIzquierda]='O'
     """ Casilla a la derecha de la Central """
     casillaALaDerecha = chr(ord(columnaCasillaCentral)+1)+filaCasillaCentral
-    if(Diccionario.get(casillaALaDerecha,[])=='O'):
-        Diccionario[casillaALaDerecha]='.'
-    else:
-        Diccionario[casillaALaDerecha]='O'
+    if (casillaALaDerecha in Diccionario):
+        if(Diccionario.get(casillaALaDerecha,[])=='O'):
+            Diccionario[casillaALaDerecha]='.'
+        else:
+            Diccionario[casillaALaDerecha]='O'
     """Casilla superior a la Central"""
     casillaSuperior= columnaCasillaCentral + str(int(filaCasillaCentral)-1)
-    if(Diccionario.get(casillaSuperior,[])=='O'):
-        Diccionario[casillaSuperior]='.'
-    else:
-        Diccionario[casillaSuperior]='O'
+    if (casillaSuperior in Diccionario):
+        if(Diccionario.get(casillaSuperior,[])=='O'):
+            Diccionario[casillaSuperior]='.'
+        else:
+            Diccionario[casillaSuperior]='O'
     """Casilla inferior a la Central"""
     casillaInferior = columnaCasillaCentral + str(int(filaCasillaCentral)+1)
-    if(Diccionario.get(casillaInferior, [])=='O'):
-        Diccionario[casillaInferior]='.'
-    else:
-        Diccionario[casillaInferior]='O'
+    if (casillaInferior in Diccionario):
+        if(Diccionario.get(casillaInferior, [])=='O'):
+            Diccionario[casillaInferior]='.'
+        else:
+            Diccionario[casillaInferior]='O'
     return (Diccionario)
 
 
