@@ -4,14 +4,15 @@ import modificadorTablero
 import mostrar_tablero
 import niveles_predeterminados
 import niveles_aleatorios
+import calculo_de_puntaje
+import prueba_solo_por_turnos
+import sys
 
 def principal():
     modoYDimension=menu_de_inicio.menu_de_inicio()
     if(modoYDimension[0]=="Predeterminado"):
-        diccionario_tablero=niveles_predeterminados.niveles_predeterminados(1)
-        mostrar_tablero.imprimir_Tablero(diccionario_tablero,modoYDimension[1])
+        prueba_solo_por_turnos.principalPredeterminado()
     elif(modoYDimension[0]=="Aleatorio"):
-        diccionario_tablero=niveles_aleatorios.generarTablerosConLuces(modoYDimension[1])
-        mostrar_tablero.imprimir_Tablero(diccionario_tablero,modoYDimension[1])
+        prueba_solo_por_turnos.principalAleatorio()
 
 principal()
