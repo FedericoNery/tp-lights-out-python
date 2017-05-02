@@ -135,4 +135,4 @@ def principalAleatorio():
             print(calculo_de_puntaje.calculoPuntaje(gananivel,nivel,lucesRestantes,reset,puntajeActual))
             mensajePerdiste()
             sys.exit()
-principalPredeterminado()
+#principalPredeterminado()
