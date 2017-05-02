@@ -7,7 +7,7 @@ def validacionIngresoDeCasillero(dimension_tablero):
     dimension_columna=str(chr(dimension_tablero+64))
 
     while(validacion==False):
-        casilla = input("Ingrese la casilla de la luz que desea apagar ")
+        casilla = input("Ingrese la casilla de la luz que desea apagar o escriba \"reinicio\" para volver al inicio del nivel ")
         casilla = casilla.upper()
         if(len(casilla)==2):
             if((casilla[0]>='A') and (casilla[0]<=dimension_columna)):
@@ -20,6 +20,8 @@ def validacionIngresoDeCasillero(dimension_tablero):
             else:
                 validacion = False
                 print ("Error ")
+        elif(casilla=="REINICIO"):
+            return (casilla)
         else:
             validacion= False
             print ("Error ")
