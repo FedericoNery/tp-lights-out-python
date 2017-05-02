@@ -35,7 +35,8 @@ def mensajePerdiste():
            P       E E E  R     R  D D D   I  S S S     T    E E E
            """)
     return ("")
-def principal():
+
+def principalPredeterminado():
     nivel=1
     while(nivel<=5):
         gananivel=False
@@ -46,7 +47,7 @@ def principal():
         mostrar_tablero.imprimir_Tablero(diccionario_tablero,modoYDimension[1])
         movimientosRestantes = modoYDimension[1]*3
         lucesRestantes=calculoDeLucesRestantes(diccionario_tablero)
-        while((movimientosRestantes>=0) and (gananivel==False) and (lucesRestantes>0)):
+        while((movimientosRestantes>0) and (gananivel==False) and (lucesRestantes>0)):
             Casilla=ingreso_de_casilla.validacionIngresoDeCasillero(modoYDimension[1])
             diccionario_tablero=modificadorTablero.modificoTablero(diccionario_tablero,Casilla)
             mostrar_tablero.imprimir_Tablero(diccionario_tablero, modoYDimension[1])
@@ -60,4 +61,30 @@ def principal():
         if(movimientosRestantes==0):
             mensajePerdiste()
             sys.exit()
-principal()
+
+def principalAleatorio():
+    nivel = 1
+    while (nivel <= 5):
+        gananivel = False
+        lucesRestantes = 0
+        lucesRestantesNuevas = 0
+        modoYDimension = ("Aleatorio", 7)
+        diccionario_tablero = niveles_aleatorios.generarTablerosConLuces(modoYDimension[1])
+        mostrar_tablero.imprimir_Tablero(diccionario_tablero, modoYDimension[1])
+        movimientosRestantes = modoYDimension[1] * 3
+        lucesRestantes = calculoDeLucesRestantes(diccionario_tablero)
+        while((movimientosRestantes > 0) and (gananivel == False) and (lucesRestantes > 0)):
+            Casilla = ingreso_de_casilla.validacionIngresoDeCasillero(modoYDimension[1])
+            diccionario_tablero = modificadorTablero.modificoTablero(diccionario_tablero, Casilla)
+            mostrar_tablero.imprimir_Tablero(diccionario_tablero, modoYDimension[1])
+            movimientosRestantes = movimientosRestantes - 1
+            lucesRestantes = calculoDeLucesRestantes(diccionario_tablero)
+            if (lucesRestantes == 0):
+                gananivel = True
+        if (gananivel == True):
+            mensajeGanoNivel()
+            nivel = nivel + 1
+        if (movimientosRestantes == 0):
+            mensajePerdiste()
+            sys.exit()
+principalAleatorio()
