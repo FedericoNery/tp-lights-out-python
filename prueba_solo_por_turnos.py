@@ -7,6 +7,24 @@ import niveles_aleatorios
 import calculo_de_puntaje
 import sys
 
+
+def verificoReinicio(nivel,modoYDimension,reset,gananivel,lucesRestantes,puntajeActual,puntajesPorNivel):
+        reset=True
+        if(modoYDimension[0]=="Predeterminado"):
+            diccionario_tablero = niveles_predeterminados.niveles_predeterminados(nivel)
+            mostrar_tablero.imprimir_Tablero(diccionario_tablero, modoYDimension[1])
+            tuplaPuntajes = calculo_de_puntaje.calculoPuntaje(gananivel, nivel, lucesRestantes, reset, puntajeActual,puntajesPorNivel)
+            movimientosRestantes = modoYDimension[1] * 3
+            lucesRestantes = calculoDeLucesRestantes(diccionario_tablero)
+            reset=False
+            return (diccionario_tablero)
+        elif(modoYDimension[0]=="Aleatorio"):
+            diccionario_tablero = niveles_aleatorios.generarTablerosConLuces(modoYDimension[1])
+            mostrar_tablero.imprimir_Tablero(diccionario_tablero, modoYDimension[1])
+            movimientosRestantes = modoYDimension[1] * 3
+            lucesRestantes = calculoDeLucesRestantes(diccionario_tablero)
+            reset=False
+
 def calculoDeLucesRestantes(diccionario_tablero):
     listaDeLuces=[]
     lucesRestantes=0
@@ -48,12 +66,11 @@ def principalPredeterminado():
     puntajeActual=0
     tuplaPuntajes=()
     puntajesPorNivel=[]
-    for i in range (1,5):
+    for i in range (1,7):
         puntajesPorNivel.append(0)
     while(nivel<=5):
         gananivel=None
         lucesRestantes=0
-        lucesRestantesNuevas=0
         modoYDimension=("Predeterminado",5)
         diccionario_tablero=niveles_predeterminados.niveles_predeterminados(nivel)
         mostrar_tablero.imprimir_Tablero(diccionario_tablero,modoYDimension[1])
@@ -61,43 +78,36 @@ def principalPredeterminado():
         lucesRestantes=calculoDeLucesRestantes(diccionario_tablero)
         while((movimientosRestantes>0) and (gananivel==None) and (lucesRestantes>0)):
             Casilla=ingreso_de_casilla.validacionIngresoDeCasillero(modoYDimension[1])
-            diccionario_tablero=modificadorTablero.modificoTablero(diccionario_tablero,Casilla)
-            mostrar_tablero.imprimir_Tablero(diccionario_tablero, modoYDimension[1])
-            movimientosRestantes=movimientosRestantes-1
-            lucesRestantes=calculoDeLucesRestantes(diccionario_tablero)
-            muestroEnPantallaLosPuntajes(tuplaPuntajes, gananivel, nivel, lucesRestantes, reset, puntajeActual,puntajesPorNivel)
-            """tuplaPuntajes=calculo_de_puntaje.calculoPuntaje(gananivel, nivel, lucesRestantes, reset, puntajeActual,puntajesPorNivel)
-            print("El puntaje en el nivel es: "+ str(tuplaPuntajes[0]))
-            print("El puntaje total es de : "+str(tuplaPuntajes[1]))"""
-            if(lucesRestantes==0):
-                gananivel=True
-            elif((lucesRestantes>0) and (movimientosRestantes==0)):
-                gananivel=False
+            if (Casilla == "REINICIO"):
+                diccionario_tablero=verificoReinicio(nivel,modoYDimension,reset,gananivel,lucesRestantes,puntajeActual,puntajesPorNivel)
+            else:
+                diccionario_tablero=modificadorTablero.modificoTablero(diccionario_tablero,Casilla)
+                mostrar_tablero.imprimir_Tablero(diccionario_tablero, modoYDimension[1])
+                movimientosRestantes=movimientosRestantes-1
+                lucesRestantes=calculoDeLucesRestantes(diccionario_tablero)
+                muestroEnPantallaLosPuntajes(tuplaPuntajes, gananivel, nivel, lucesRestantes, reset, puntajeActual,puntajesPorNivel)
+                if(lucesRestantes==0):
+                    gananivel=True
+                elif((lucesRestantes>0) and (movimientosRestantes==0)):
+                    gananivel=False
         if(gananivel==True):
             mensajeGanoNivel()
             muestroEnPantallaLosPuntajes(tuplaPuntajes, gananivel, nivel, lucesRestantes, reset, puntajeActual,puntajesPorNivel)
-            """tuplaPuntajes = calculo_de_puntaje.calculoPuntaje(gananivel, nivel, lucesRestantes, reset, puntajeActual,puntajesPorNivel)
-            print("El puntaje obtenido en el nivel es de: " + str(tuplaPuntajes[0]))
-            print("El puntaje total obtenido hasta ahora es de : " + str(tuplaPuntajes[1]))"""
-            #print(calculo_de_puntaje.calculoPuntaje(gananivel, nivel, lucesRestantes, reset, puntajeActual))
             nivel=nivel+1
         if(movimientosRestantes==0):
             muestroEnPantallaLosPuntajes(tuplaPuntajes, gananivel, nivel, lucesRestantes, reset, puntajeActual,puntajesPorNivel)
-            """tuplaPuntajes = calculo_de_puntaje.calculoPuntaje(gananivel, nivel, lucesRestantes, reset, puntajeActual,puntajesPorNivel)
-            print("El puntaje obtenido en el nivel fue de: " + str(tuplaPuntajes[0]))
-            print("El puntaje total obtenido fue de : " + str(tuplaPuntajes[1]))"""
-            #print(calculo_de_puntaje.calculoPuntaje(gananivel, nivel, lucesRestantes, reset, puntajeActual))
             mensajePerdiste()
             sys.exit()
 
 def principalAleatorio():
     nivel = 1
     reset = False
+    tuplaPuntajes = ()
     puntajeActual = 0
+    puntajesPorNivel = []
     while (nivel <= 5):
         gananivel = None
         lucesRestantes = 0
-        lucesRestantesNuevas = 0
         modoYDimension = ("Aleatorio", 7)
         diccionario_tablero = niveles_aleatorios.generarTablerosConLuces(modoYDimension[1])
         mostrar_tablero.imprimir_Tablero(diccionario_tablero, modoYDimension[1])
@@ -105,13 +115,14 @@ def principalAleatorio():
         lucesRestantes = calculoDeLucesRestantes(diccionario_tablero)
         while((movimientosRestantes > 0) and (gananivel == None) and (lucesRestantes > 0)):
             Casilla = ingreso_de_casilla.validacionIngresoDeCasillero(modoYDimension[1])
+
+            verificoReinicio(Casilla, nivel, modoYDimension, reset, gananivel, lucesRestantes, puntajeActual,puntajesPorNivel)
+
             diccionario_tablero = modificadorTablero.modificoTablero(diccionario_tablero, Casilla)
             mostrar_tablero.imprimir_Tablero(diccionario_tablero, modoYDimension[1])
             movimientosRestantes = movimientosRestantes - 1
             lucesRestantes = calculoDeLucesRestantes(diccionario_tablero)
-            tuplaPuntajes = calculo_de_puntaje.calculoPuntaje(gananivel, nivel, lucesRestantes, reset, puntajeActual)
-            print("El puntaje en el nivel es: " + str(tuplaPuntajes[0]))
-            print("El puntaje total es de : " + str(tuplaPuntajes[1]))
+            muestroEnPantallaLosPuntajes(tuplaPuntajes, gananivel, nivel, lucesRestantes, reset, puntajeActual,puntajesPorNivel)
             if(lucesRestantes == 0):
                 gananivel = True
             elif((lucesRestantes == 0) and (movimientosRestantes == 0)):
