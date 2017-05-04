@@ -17,7 +17,7 @@ def verificoReinicio(nivel,modoYDimension,reset,gananivel,lucesRestantes,puntaje
             movimientosRestantes = modoYDimension[1] * 3
             lucesRestantes = calculoDeLucesRestantes(diccionario_tablero)
             reset=False
-            return (diccionario_tablero)
+            return (diccionario_tablero,movimientosRestantes)
         elif(modoYDimension[0]=="Aleatorio"):
             diccionario_tablero = niveles_aleatorios.generarTablerosConLuces(modoYDimension[1])
             mostrar_tablero.imprimir_Tablero(diccionario_tablero, modoYDimension[1])
@@ -65,6 +65,7 @@ def principalPredeterminado():
     reset=False
     puntajeActual=0
     tuplaPuntajes=()
+    tuplaTableroMovimientos=()
     puntajesPorNivel=[]
     for i in range (1,7):
         puntajesPorNivel.append(0)
@@ -79,7 +80,9 @@ def principalPredeterminado():
         while((movimientosRestantes>0) and (gananivel==None) and (lucesRestantes>0)):
             Casilla=ingreso_de_casilla.validacionIngresoDeCasillero(modoYDimension[1])
             if (Casilla == "REINICIO"):
-                diccionario_tablero=verificoReinicio(nivel,modoYDimension,reset,gananivel,lucesRestantes,puntajeActual,puntajesPorNivel)
+                tuplaTableroMovimientos=verificoReinicio(nivel,modoYDimension,reset,gananivel,lucesRestantes,puntajeActual,puntajesPorNivel)
+                diccionario_tablero=tuplaTableroMovimientos[0]
+                movimientosRestantes=tuplaTableroMovimientos[1]
             else:
                 diccionario_tablero=modificadorTablero.modificoTablero(diccionario_tablero,Casilla)
                 mostrar_tablero.imprimir_Tablero(diccionario_tablero, modoYDimension[1])
