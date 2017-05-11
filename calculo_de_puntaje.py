@@ -6,7 +6,7 @@ def calculoPuntaje(ganonivel,nivel,lucesRestantes,reset,puntajeActual,puntajesPo
          puntajeActual=puntajeActual-300
     if(reset==True):
          puntajeActual=puntajeActual-50*lucesRestantes#Asegurarse que lucesRestantes sea un entero
-    puntajesPorNivel[nivel]=puntajeActual+puntajesPorNivel[nivel]
+    puntajesPorNivel[nivel-1]=puntajeActual+puntajesPorNivel[nivel-1]
     for i in puntajesPorNivel:
         puntajeTotal=i+puntajeTotal
-    return(puntajesPorNivel[nivel],puntajeTotal,puntajesPorNivel)
+    return(puntajesPorNivel[nivel-1],puntajeTotal,puntajesPorNivel)
