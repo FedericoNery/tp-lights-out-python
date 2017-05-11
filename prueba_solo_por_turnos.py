@@ -116,7 +116,7 @@ def principalPredeterminado():
             else:
                 nivel=nivel+1
 
-        if(movimientosRestantes==0):
+        if((movimientosRestantes==0) and (gananivel==False)):
             muestroEnPantallaLosPuntajes(tuplaPuntajes, gananivel, nivel, lucesRestantes, reset, puntajeActual,puntajesPorNivel)
             mensajePerdiste()
             menu_de_inicio.menu_de_inicio()
