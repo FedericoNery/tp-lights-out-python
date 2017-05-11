@@ -103,7 +103,8 @@ def principalPredeterminado():
                 movimientosRestantes=movimientosRestantes-1
                 print("MOVIMIENTOS RESTANTES: " + str(movimientosRestantes))
                 lucesRestantes=calculoDeLucesRestantes(diccionario_tablero)
-                muestroEnPantallaLosPuntajes(tuplaPuntajes, gananivel, nivel, lucesRestantes, reset, puntajeActual,puntajesPorNivel)
+                if(movimientosRestantes!=0):
+                    muestroEnPantallaLosPuntajes(tuplaPuntajes, gananivel, nivel, lucesRestantes, reset, puntajeActual,puntajesPorNivel)
                 if(lucesRestantes==0):
                     gananivel=True
                 elif((lucesRestantes>0) and (movimientosRestantes==0)):
@@ -118,6 +119,14 @@ def principalPredeterminado():
 
         if((movimientosRestantes==0) and (gananivel==False)):
             muestroEnPantallaLosPuntajes(tuplaPuntajes, gananivel, nivel, lucesRestantes, reset, puntajeActual,puntajesPorNivel)
+            gananivel = None
+            tuplaPuntajes = calculo_de_puntaje.calculoPuntaje(gananivel, nivel, lucesRestantes, reset, puntajeActual,puntajesPorNivel)
+            print("")
+            print("TABLA DE PUNTAJES FINALES: ")
+            tuplaPuntajes = tuplaPuntajes[2]
+            for i in tuplaPuntajes:
+                contadorNivel = contadorNivel + 1
+                print("El puntaje obtenido en el nivel " + str(contadorNivel) + " es de " + str(i))
             mensajePerdiste()
             menu_de_inicio.menu_de_inicio()
     if (ganojuego==True):
