@@ -75,6 +75,7 @@ def principalPredeterminado():
     reset=False
     ganojuego=False
     puntajeActual=0
+    movimientosIniciales=0
     tuplaPuntajes=()
     tuplaTableroMovimientos=()
     puntajesPorNivel=[]
@@ -82,13 +83,16 @@ def principalPredeterminado():
     for i in range (1,6):
         puntajesPorNivel.append(0)
     while((nivel<=5) and (ganojuego==False)):
+        print("NIVEL " + str(nivel)+"\n")
         gananivel=None
         lucesRestantes=0
         modoYDimension=("Predeterminado",5)
         diccionario_tablero=niveles_predeterminados.niveles_predeterminados(nivel)
         mostrar_tablero.imprimir_Tablero(diccionario_tablero,modoYDimension[1])
         movimientosRestantes = modoYDimension[1]*3
-        print("MOVIMIENTOS RESTANTES: "+str(movimientosRestantes))
+        movimientosIniciales=movimientosRestantes
+
+        print("MOVIMIENTOS RESTANTES: "+str(movimientosRestantes)+"/"+str(movimientosIniciales))
         lucesRestantes=calculoDeLucesRestantes(diccionario_tablero)
         while((movimientosRestantes>0) and (gananivel==None) and (lucesRestantes>0)):
             Casilla=ingreso_de_casilla.validacionIngresoDeCasillero(modoYDimension[1])
@@ -96,12 +100,12 @@ def principalPredeterminado():
                 tuplaTableroMovimientos=verificoReinicio(nivel,modoYDimension,reset,gananivel,lucesRestantes,puntajeActual,puntajesPorNivel)
                 diccionario_tablero=tuplaTableroMovimientos[0]
                 movimientosRestantes=tuplaTableroMovimientos[1]
-                print("MOVIMIENTOS RESTANTES: " + str(movimientosRestantes))
+                print("MOVIMIENTOS RESTANTES: " + str(movimientosRestantes)+"/"+str(movimientosIniciales))
             else:
                 diccionario_tablero=modificadorTablero.modificoTablero(diccionario_tablero,Casilla)
                 mostrar_tablero.imprimir_Tablero(diccionario_tablero, modoYDimension[1])
                 movimientosRestantes=movimientosRestantes-1
-                print("MOVIMIENTOS RESTANTES: " + str(movimientosRestantes))
+                print("MOVIMIENTOS RESTANTES: " + str(movimientosRestantes)+"/"+str(movimientosIniciales))
                 lucesRestantes=calculoDeLucesRestantes(diccionario_tablero)
                 if(movimientosRestantes!=0):
                     muestroEnPantallaLosPuntajes(tuplaPuntajes, gananivel, nivel, lucesRestantes, reset, puntajeActual,puntajesPorNivel)
