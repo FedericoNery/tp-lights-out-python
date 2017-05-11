@@ -107,8 +107,8 @@ def principalPredeterminado():
                 movimientosRestantes=movimientosRestantes-1
                 print("MOVIMIENTOS RESTANTES: " + str(movimientosRestantes)+"/"+str(movimientosIniciales))
                 lucesRestantes=calculoDeLucesRestantes(diccionario_tablero)
-                if(movimientosRestantes!=0):
-                    muestroEnPantallaLosPuntajes(tuplaPuntajes, gananivel, nivel, lucesRestantes, reset, puntajeActual,puntajesPorNivel)
+                #if(movimientosRestantes!=0):
+                 #   muestroEnPantallaLosPuntajes(tuplaPuntajes, gananivel, nivel, lucesRestantes, reset, puntajeActual,puntajesPorNivel)
                 if(lucesRestantes==0):
                     gananivel=True
                 elif((lucesRestantes>0) and (movimientosRestantes==0)):
@@ -127,6 +127,7 @@ def principalPredeterminado():
             tuplaPuntajes = calculo_de_puntaje.calculoPuntaje(gananivel, nivel, lucesRestantes, reset, puntajeActual,puntajesPorNivel)
             print("")
             print("TABLA DE PUNTAJES FINALES: ")
+            print("El puntaje total es de: " + str(tuplaPuntajes[1]))
             tuplaPuntajes = tuplaPuntajes[2]
             for i in tuplaPuntajes:
                 contadorNivel = contadorNivel + 1
@@ -136,7 +137,7 @@ def principalPredeterminado():
     if (ganojuego==True):
         gananivel=None
         tuplaPuntajes = calculo_de_puntaje.calculoPuntaje(gananivel, nivel, lucesRestantes, reset, puntajeActual,puntajesPorNivel)
-        #print("El puntaje total es de: "+ str(tuplaPuntajes[2]))
+        print("El puntaje total es de: "+ str(tuplaPuntajes[2]))
         tuplaPuntajes=tuplaPuntajes[2]
         for i in tuplaPuntajes:
             contadorNivel=contadorNivel+1
