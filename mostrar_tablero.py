@@ -45,7 +45,7 @@ def imprimir_Tablero(resultado,dimension_tablero):
             linea_acumulada.append(elemento)
             if(recorrido_columnas==dimension):
                 sacarCaracteresResiduales(linea_acumulada)
-                print(str(recorrido_filas)+" "+sacarCaracteresResiduales(linea_acumulada))
+                print(str(recorrido_filas)+"|"+sacarCaracteresResiduales(linea_acumulada))
             recorrido_columnas=recorrido_columnas+1#Paso a la segunda columna
         linea_acumulada=[]
         recorrido_filas=recorrido_filas+1
