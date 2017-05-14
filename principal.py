@@ -13,6 +13,6 @@ def principal():
     if(modoYDimension[0]=="Predeterminado"):
         prueba_solo_por_turnos.principalPredeterminado()
     elif(modoYDimension[0]=="Aleatorio"):
-        prueba_solo_por_turnos.principalAleatorio()
+        prueba_solo_por_turnos.principalAleatorio(modoYDimension)
 
 principal()
