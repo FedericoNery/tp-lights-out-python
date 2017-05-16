@@ -17,15 +17,6 @@ def verificoReinicio(nivel,modoYDimension,reset,gananivel,lucesRestantes,puntaje
             lucesRestantes = calculoDeLucesRestantes(diccionario_tablero)
             reset=False
             return (diccionario_tablero,movimientosRestantes)
-        #elif(modoYDimension[0]=="Aleatorio"):
-           # tuplaPuntajes = calculo_de_puntaje.calculoPuntaje(gananivel, nivel, lucesRestantes, reset, puntajeActual,puntajesPorNivel)
-           # movimientosRestantes = modoYDimension[1] * 3
-           # lucesRestantes = calculoDeLucesRestantes(diccionario_tablero)
-          #  diccionario_tablero = diccionarioOriginal
-          #  mostrar_tablero.imprimir_Tablero(diccionario_tablero, modoYDimension[1])
-
-          #  reset=False
-          #  return(diccionario_tablero,movimientosRestantes)
 
 def calculoDeLucesRestantes(diccionario_tablero):
     listaDeLuces=[]
@@ -101,14 +92,14 @@ def principalPredeterminado():
                 diccionario_tablero=tuplaTableroMovimientos[0]
                 movimientosRestantes=tuplaTableroMovimientos[1]
                 print("MOVIMIENTOS RESTANTES: " + str(movimientosRestantes)+"/"+str(movimientosIniciales))
+                muestroEnPantallaLosPuntajes(tuplaPuntajes, gananivel, nivel, lucesRestantes, reset, puntajeActual,puntajesPorNivel)
+
             else:
                 diccionario_tablero=modificadorTablero.modificoTablero(diccionario_tablero,Casilla)
                 mostrar_tablero.imprimir_Tablero(diccionario_tablero, modoYDimension[1])
                 movimientosRestantes=movimientosRestantes-1
                 print("MOVIMIENTOS RESTANTES: " + str(movimientosRestantes)+"/"+str(movimientosIniciales))
                 lucesRestantes=calculoDeLucesRestantes(diccionario_tablero)
-                #if(movimientosRestantes!=0):
-                 #   muestroEnPantallaLosPuntajes(tuplaPuntajes, gananivel, nivel, lucesRestantes, reset, puntajeActual,puntajesPorNivel)
                 if(lucesRestantes==0):
                     gananivel=True
                 elif((lucesRestantes>0) and (movimientosRestantes==0)):
