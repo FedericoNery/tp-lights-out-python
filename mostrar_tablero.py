@@ -13,7 +13,7 @@ def imprimirFilaSuperiorDelTablero(dimensionTablero):
     lineaSuperiorDelTablero=" "+lineaSuperiorDelTablero
     print(lineaSuperiorDelTablero)
 
-def imprimir_Tablero(tableroConLuces, dimensionTablero):
+def imprimirTablero(tableroConLuces, dimensionTablero):
     """
        1 es A  6 es F
        2 es B  7 es G
@@ -25,12 +25,15 @@ def imprimir_Tablero(tableroConLuces, dimensionTablero):
     numeroDeFilaQueAnalizo=1
     numeroDeColumnaQueAnalizo=1
     imprimirFilaSuperiorDelTablero(dimensionTablero)
+
     while(numeroDeFilaQueAnalizo<=dimensionTablero):
+
         while (numeroDeColumnaQueAnalizo<=dimensionTablero):#Columna 1 Columna 2 Columna 3
             fila=str(numeroDeFilaQueAnalizo)
             columna=chr(numeroDeColumnaQueAnalizo+64)
             estadoDeLuzDeLaCasillaAnalizada=tableroConLuces[(columna+fila)]
             estadosDeLucesDeLaFilaAnalizada.append(estadoDeLuzDeLaCasillaAnalizada)
+
             if(numeroDeColumnaQueAnalizo==dimensionTablero):
                 sacarCaracteresResiduales(estadosDeLucesDeLaFilaAnalizada)
                 print(str(numeroDeFilaQueAnalizo)+"|"+sacarCaracteresResiduales(estadosDeLucesDeLaFilaAnalizada))
@@ -38,5 +41,5 @@ def imprimir_Tablero(tableroConLuces, dimensionTablero):
         estadosDeLucesDeLaFilaAnalizada=[]
         numeroDeFilaQueAnalizo=numeroDeFilaQueAnalizo+1
         numeroDeColumnaQueAnalizo=1
-    return("")
+
 
