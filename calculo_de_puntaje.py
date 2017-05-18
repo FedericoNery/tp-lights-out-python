@@ -18,6 +18,7 @@ def calculoPuntaje(ganoNivel, nivel, lucesRestantes, reinicioNivel, puntajeActua
 
 
 def calculoPuntajeTotal(puntajesPorNivel):
+    puntajeTotal=0
     for i in puntajesPorNivel:
         puntajeTotal=i+puntajeTotal
     return puntajeTotal
@@ -26,7 +27,7 @@ def calculoPuntajeActual(ganoNivel,reinicioNivel,lucesRestantes):
     if (ganoNivel):
         return 500
 
-    elif (not ganoNivel):
+    elif (ganoNivel==False):
         return (-300)
 
     if (reinicioNivel):
