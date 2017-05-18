@@ -106,7 +106,6 @@ def principalPredeterminado():
                 movimientosRestantes = tableroYMovimientosRestantes[1]
                 print("MOVIMIENTOS RESTANTES: " + str(movimientosRestantes) + "/" + str(movimientosIniciales))
                 muestroEnPantallaLosPuntajes(ganaNivel, nivelDelJuego, reinicioDelJuego, lucesRestantes, puntajesPorNivel)
-                #muestroEnPantallaLosPuntajes(puntajeTotal_PorNivel, gananivel, nivelDelJuego, lucesRestantes, reinicioDelJuego, puntajeActual,puntajesPorNivel)
                 reinicioDelJuego=False
             else:
                 tablero = modificadorTablero.modificoTablero(tablero,coordenadaIngresadaPorElUsuario)
@@ -122,6 +121,7 @@ def principalPredeterminado():
 
         if(ganaNivel):
             mensajeGanoNivel()
+            puntajesPorNivel[nivelDelJuego-1]=puntajeActual
             muestroEnPantallaLosPuntajes(ganaNivel, nivelDelJuego, reinicioDelJuego, lucesRestantes, puntajesPorNivel)
 
             if(nivelDelJuego == 5):
@@ -131,31 +131,31 @@ def principalPredeterminado():
 
         if(perdioElNivel(movimientosRestantes,ganaNivel)):
             muestroEnPantallaLosPuntajes(ganaNivel, nivelDelJuego,reinicioDelJuego, lucesRestantes, puntajesPorNivel)
+            puntajeTotal=calculo_de_puntaje.calculoPuntajeTotal(puntajesPorNivel)
             ganaNivel = None
-            puntajeTotal_PorNivel = calculo_de_puntaje.calculoPuntaje(ganaNivel, nivelDelJuego, lucesRestantes, reinicioDelJuego,puntajesPorNivel)
             print("")
             print("TABLA DE PUNTAJES FINALES: ")
-            print("El puntaje total es de: " + str(puntajeTotal_PorNivel[1]))
-            puntajeTotal_PorNivel = puntajeTotal_PorNivel[2]
-
-            for i in puntajeTotal_PorNivel:
+            print("El puntaje total es de: " + str(puntajeTotal))
+            for i in puntajesPorNivel:
                 contadorNivel = contadorNivel + 1
                 print("El puntaje obtenido en el nivel " + str(contadorNivel) + " es de " + str(i))
             mensajePerdiste()
             menu_de_inicio.menu_de_inicio()
 
     if (ganoJuego):
-        ganaNivel = None
-        muestroEnPantallaLosPuntajes(ganaNivel, nivelDelJuego, reinicioDelJuego, lucesRestantes, puntajesPorNivel)
-        #puntajeTotal_PorNivel = calculo_de_puntaje.calculoPuntaje(ganaNivel, nivelDelJuego, reinicioDelJuego,lucesRestantes,puntajeActual,puntajesPorNivel)
-        print("El puntaje total es de: " + str(puntajeTotal_PorNivel[2]))
-        puntajeTotal_PorNivel=puntajeTotal_PorNivel[2]
+        puntajeActual=calculo_de_puntaje.calculoPuntajeActual(ganaNivel,reinicioDelJuego,lucesRestantes)
+        #muestroEnPantallaLosPuntajes(ganaNivel, nivelDelJuego, reinicioDelJuego, lucesRestantes, puntajesPorNivel)
+        puntajeTotal = calculo_de_puntaje.calculoPuntajeTotal(puntajesPorNivel)
+        print("")
+        print("TABLA DE PUNTAJES FINALES: ")
+        print("El puntaje total es de: " + str(puntajeTotal))
 
-        for i in puntajeTotal_PorNivel:
+        for i in puntajesPorNivel:
             contadorNivel = contadorNivel+1
             print("El puntaje obtenido en el nivel " + str(contadorNivel) + " es de " + str(i))
         mensajeGanoJuego()
         menu_de_inicio.menu_de_inicio()
+        ganaNivel = None
 
 def principalAleatorio(modoYDimension):
     nivel = 1
