@@ -1,21 +1,5 @@
-def calculoPuntaje(ganoNivel, nivel, lucesRestantes, reinicioNivel, puntajeActual, puntajesPorNivel):
-    puntajeTotal=0
-    if(ganoNivel):
-         puntajeActual=puntajeActual+500
-
-    elif(ganoNivel==False):
-         puntajeActual=puntajeActual-300
-
-    if(reinicioNivel):
-         puntajeActual=puntajeActual-50*lucesRestantes
-
-    puntajesPorNivel[nivel-1]=puntajeActual+puntajesPorNivel[nivel-1]
-
-    for i in puntajesPorNivel:
-        puntajeTotal=i+puntajeTotal
-
-    return(puntajesPorNivel[nivel-1],puntajeTotal,puntajesPorNivel)
-
+def imprimirPuntajeDelNivel(puntajesPorNivel,nivel):
+    print("El puntaje en el nivel es: "+str(puntajesPorNivel[nivel-1]))
 
 def calculoPuntajeTotal(puntajesPorNivel):
     puntajeTotal=0
@@ -33,9 +17,7 @@ def calculoPuntajeActual(ganoNivel,reinicioNivel,lucesRestantes):
     if (reinicioNivel):
         return (-50*lucesRestantes)
 
-def imprimirEncabezadoTablaPuntajesFinales(puntajeTotal):
-    print("")
-    print("TABLA DE PUNTAJES FINALES: ")
+def imprimirPuntajeTotal(puntajeTotal):
     print("El puntaje total es de: " + str(puntajeTotal))
 
 def imprimirTodosLosPuntajesDeLosNiveles(puntajesPorNivel,contadorNivel):
