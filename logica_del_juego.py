@@ -5,6 +5,7 @@ import mostrar_tablero
 import niveles_predeterminados
 import niveles_aleatorios
 import calculo_de_puntaje
+import mensajes_del_juego
 
 def restablezcoTableroOriginalPredeterminado(nivelDelJuego):
     tablero = niveles_predeterminados.niveles_predeterminados(nivelDelJuego)
@@ -28,35 +29,6 @@ def muestroEnPantallaLosPuntajes(ganaNivel,nivel,reinicioElJuego,lucesRestantes,
     print("El puntaje en el nivel es: " + str(puntajesPorNivel[nivel-1]))
     print("El puntaje total es de : " + str(puntajeTotal))
 
-
-def mensajeGanoJuego():
-    print("""
-      G G G      A     NN    N   O O O      E E E  L        J J J U     U  E E E   G G G   O O O
-     G          A A    N N   N  O     O     E      L          J   U     U  E      G       O     O
-     G   G G   A   A   N  N  N  O     O     E E E  L          J   U     U  E E E  G   G G O     O
-     G     G  A A A A  N   N N  O     O     E      L          J   U     U  E      G     G O     O
-      G G G  A       A N    NN   O O O      E E E  L L L   J J     U U U   E E E   G G G   O O O
-    """)
-
-def mensajeGanoNivel():
-    print("""
-             G G G      A     NN    N   O O O      E E E  L        NN    N  I  V       V  E E E  L
-            G          A A    N N   N  O     O     E      L        N N   N  I   V     V   E      L
-            G   G G   A   A   N  N  N  O     O     E E E  L        N  N  N  I    V   V    E E E  L
-            G     G  A A A A  N   N N  O     O     E      L        N   N N  I     V V     E      L
-             G G G  A       A N    NN   O O O      E E E  L L L    N    NN  I      V      E E E  L L L
-            """)
-    return ("")
-
-def mensajePerdiste():
-    print("""
-           P P P   E E E  R R R    D D D   I   S S S  T T T  E E E
-           P    P  E      R    R   D    D  I  S         T    E
-           P P P   E E E  R R R    D    D  I    S S     T    E E E
-           P       E      R    R   D    D  I       S    T    E
-           P       E E E  R     R  D D D   I  S S S     T    E E E
-           """)
-    return ("")
 
 def noSeGanoElNivel(movimientosRestantes,gananivel,lucesRestantes):
     return ((movimientosRestantes > 0) and (gananivel == None) and (lucesRestantes > 0))
@@ -122,7 +94,7 @@ def principalPredeterminado(dimensionDelTablero):
                     ganaNivel = False
 
         if(ganaNivel):
-            mensajeGanoNivel()
+            mensajes_del_juego.mensajeGanoNivel()
             puntajeActual = calculo_de_puntaje.calculoPuntajeActual(ganaNivel,reinicioDelJuego,lucesRestantes)
             puntajesPorNivel[nivelDelJuego-1] = puntajeActual+puntajesPorNivel[nivelDelJuego-1]
             puntajeTotal = calculo_de_puntaje.calculoPuntajeTotal(puntajesPorNivel)
@@ -142,14 +114,14 @@ def principalPredeterminado(dimensionDelTablero):
             calculo_de_puntaje.imprimirPuntajeTotal(puntajeTotal)
             calculo_de_puntaje.imprimirTodosLosPuntajesDeLosNiveles(puntajesPorNivel)
 
-            mensajePerdiste()
+            mensajes_del_juego.mensajePerdiste()
             menu_de_inicio.mostrarMenuDeInicio()
 
     if (ganoJuego):
         puntajeActual = calculo_de_puntaje.calculoPuntajeActual(ganaNivel,reinicioDelJuego,lucesRestantes)
         puntajeTotal = calculo_de_puntaje.calculoPuntajeTotal(puntajesPorNivel)
         calculo_de_puntaje.imprimirTodosLosPuntajesDeLosNiveles(puntajesPorNivel)
-        mensajeGanoJuego()
+        mensajes_del_juego.mensajeGanoJuego()
         menu_de_inicio.mostrarMenuDeInicio()
 
 def principalAleatorio(dimensionDelTablero):
