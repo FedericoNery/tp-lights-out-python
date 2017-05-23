@@ -1,7 +1,3 @@
-from niveles_aleatorios import generarTableroAleatorio
-from ingreso_de_casilla import validacionIngresoDeCasillero
-from mostrar_tablero import imprimirTablero
-
 def modificoTablero(tablero, ingresoCoordenadaDelUsuario):
     #Cuatro casilleros alrededor del central
     filaCasillaCentral = ingresoCoordenadaDelUsuario[1]
@@ -12,7 +8,7 @@ def modificoTablero(tablero, ingresoCoordenadaDelUsuario):
     casillaSuperior = columnaCasillaCentral + str(int(filaCasillaCentral) - 1)
     casillaInferior = columnaCasillaCentral + str(int(filaCasillaCentral) + 1)
 
-    casillasConPosiblesCambiosDeEstado=[ingresoCoordenadaDelUsuario,casillaALaIzquierda,casillaALaDerecha,casillaSuperior,casillaInferior]
+    casillasConPosiblesCambiosDeEstado = [ingresoCoordenadaDelUsuario,casillaALaIzquierda,casillaALaDerecha,casillaSuperior,casillaInferior]
 
     for coordenada in casillasConPosiblesCambiosDeEstado:
         if(coordenada in tablero):
