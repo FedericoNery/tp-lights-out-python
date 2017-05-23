@@ -107,7 +107,12 @@ def principalPredeterminado(modoYDimension):
                 tablero = tableroYMovimientosRestantes[0]
                 movimientosRestantes = tableroYMovimientosRestantes[1]
                 print("MOVIMIENTOS RESTANTES: " + str(movimientosRestantes) + "/" + str(movimientosIniciales))
-                muestroEnPantallaLosPuntajes(ganaNivel, nivelDelJuego, reinicioDelJuego, lucesRestantes, puntajesPorNivel)
+                puntajeActual = calculo_de_puntaje.calculoPuntajeActual(ganaNivel, reinicioDelJuego, lucesRestantes)
+                puntajesPorNivel[nivelDelJuego - 1] = puntajeActual + puntajesPorNivel[nivelDelJuego - 1]
+                puntajeTotal = calculo_de_puntaje.calculoPuntajeTotal(puntajesPorNivel)
+                calculo_de_puntaje.imprimirPuntajeDelNivel(puntajesPorNivel, nivelDelJuego)
+                calculo_de_puntaje.imprimirPuntajeTotal(puntajeTotal)
+
                 reinicioDelJuego = False
             else:
                 tablero = modificadorTablero.modificoTablero(tablero,coordenadaIngresadaPorElUsuario)
@@ -123,8 +128,11 @@ def principalPredeterminado(modoYDimension):
 
         if(ganaNivel):
             mensajeGanoNivel()
+            puntajeActual = calculo_de_puntaje.calculoPuntajeActual(ganaNivel,reinicioDelJuego,lucesRestantes)
             puntajesPorNivel[nivelDelJuego-1] = puntajeActual+puntajesPorNivel[nivelDelJuego-1]
-            muestroEnPantallaLosPuntajes(ganaNivel, nivelDelJuego, reinicioDelJuego, lucesRestantes, puntajesPorNivel)
+            puntajeTotal = calculo_de_puntaje.calculoPuntajeTotal(puntajesPorNivel)
+            calculo_de_puntaje.imprimirPuntajeTotal(puntajeTotal)
+            calculo_de_puntaje.imprimirPuntajeDelNivel(puntajesPorNivel,nivelDelJuego)
 
             if(nivelDelJuego == 5):
                 ganoJuego = True
@@ -132,10 +140,11 @@ def principalPredeterminado(modoYDimension):
                 nivelDelJuego = nivelDelJuego+1
 
         if(perdioElNivel(movimientosRestantes,ganaNivel)):
-            muestroEnPantallaLosPuntajes(ganaNivel, nivelDelJuego,reinicioDelJuego, lucesRestantes, puntajesPorNivel)
+            puntajeActual = calculo_de_puntaje.calculoPuntajeActual(ganaNivel, reinicioDelJuego, lucesRestantes)
+            puntajesPorNivel[nivelDelJuego - 1] = puntajeActual + puntajesPorNivel[nivelDelJuego - 1]
             puntajeTotal = calculo_de_puntaje.calculoPuntajeTotal(puntajesPorNivel)
             ganaNivel = None
-            calculo_de_puntaje.imprimirEncabezadoTablaPuntajesFinales(puntajeTotal)
+            calculo_de_puntaje.imprimirPuntajeTotal(puntajeTotal)
             calculo_de_puntaje.imprimirTodosLosPuntajesDeLosNiveles(puntajesPorNivel, contadorNivel)
 
             mensajePerdiste()
@@ -144,12 +153,11 @@ def principalPredeterminado(modoYDimension):
     if (ganoJuego):
         puntajeActual = calculo_de_puntaje.calculoPuntajeActual(ganaNivel,reinicioDelJuego,lucesRestantes)
         puntajeTotal = calculo_de_puntaje.calculoPuntajeTotal(puntajesPorNivel)
-        calculo_de_puntaje.imprimirEncabezadoTablaPuntajesFinales(puntajeTotal)
+        calculo_de_puntaje.imprimirPuntajeTotal(puntajeTotal)
         calculo_de_puntaje.imprimirTodosLosPuntajesDeLosNiveles(puntajesPorNivel,contadorNivel)
 
         mensajeGanoJuego()
         menu_de_inicio.menu_de_inicio()
-        ganaNivel = None
 
 def principalAleatorio(modoYDimension):
     nivel = 1
