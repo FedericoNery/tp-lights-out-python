@@ -81,24 +81,24 @@ def menu_de_inicio():
     ingresoDeOpcionJugarSalir()
     imprimirAleatorioPredeterminado()
 
-    validacion = False
-    while(validacion == False):
+    validacionDeIngresoDelModoDeJuego = False
+    while(not validacionDeIngresoDelModoDeJuego):
         numeroDeOpcionElegida = input("Ingrese el numero correspondiente a la accion que desea realizar ")
 
         if(usuarioSeleccionoAleatorio(numeroDeOpcionElegida)):
-            validacion = True
+            validacionDeIngresoDelModoDeJuego = True
             modoDelJuego = "Aleatorio"
             imprimirDimensionesTablerosAleatorios()
             dimensionTablero = ingresoDeLaDimensionDelTablero()
 
         elif(usuarioSeleccionoPredeterminado(numeroDeOpcionElegida)):
-            validacion = True
+            validacionDeIngresoDelModoDeJuego = True
             print ("Se determino jugar al modo predeterminado \n")
             modoDelJuego = "Predeterminado"
             dimensionTablero = 5
 
         else:
-            validacion = False
+            validacionDeIngresoDelModoDeJuego = False
             print ("Error")
 
     return (modoDelJuego,dimensionTablero)
