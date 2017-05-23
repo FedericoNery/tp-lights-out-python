@@ -1,4 +1,5 @@
 import sys
+import prueba_solo_por_turnos
 def mensaje_de_bienvenida():
     print("|- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -|")
     print("| B B B    I   E E E  NN    N V       V E E E  NN    N  I  D D D     O O O          A     |")
@@ -15,31 +16,39 @@ def mensaje_de_bienvenida():
     print("|- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -|\n")
 
 def dimensionIngresadaDelTableroValida(numeroDeLaDimensionDelTablero):
-    return ((numeroDeLaDimensionDelTablero=='5') or (numeroDeLaDimensionDelTablero=='6')or (numeroDeLaDimensionDelTablero == '7') or (numeroDeLaDimensionDelTablero == '8') or (numeroDeLaDimensionDelTablero == '9')or (numeroDeLaDimensionDelTablero=='10'))
+    return ((numeroDeLaDimensionDelTablero == '5') or (numeroDeLaDimensionDelTablero == '6')or (numeroDeLaDimensionDelTablero == '7') or (numeroDeLaDimensionDelTablero == '8') or (numeroDeLaDimensionDelTablero == '9')or (numeroDeLaDimensionDelTablero=='10'))
 
 def ingresoDeOpcionJugarSalir():
-    validacion = False
-    while (not validacion):
+
+    validacionNumeroIngresadoOpcion = False
+
+    while (not validacionNumeroIngresadoOpcion):
+
         numeroDeOpcionElegida = input("Ingrese el valor numerico de lo que desea hacer ")
+
         if (numeroDeOpcionElegida == '1'):
-            validacion = True
+            validacionNumeroIngresadoOpcion = True
+
         elif (numeroDeOpcionElegida == '2'):
             sys.exit()
+
         else:
             print("Error")
 
 def ingresoDeLaDimensionDelTablero():
+
     validacionDeLaDimensionElegidaDelTablero = False
+
     while (not validacionDeLaDimensionElegidaDelTablero):
-        numeroDeLaDimensionDelTablero = str(
-            input("Ingrese el numero correspondiente a la dimension del tablero en la que desea jugar "))
+
+        numeroDeLaDimensionDelTablero = str(input("Ingrese el numero correspondiente a la dimension del tablero en la que desea jugar "))
 
         if (dimensionIngresadaDelTableroValida(numeroDeLaDimensionDelTablero)):
             validacionDeLaDimensionElegidaDelTablero = True
             dimensionTablero = int(numeroDeLaDimensionDelTablero)
-            print("Se determino jugar al modo aleatorio " + ",la dimension sera de: " + str(
-                dimensionTablero) + " x " + str(dimensionTablero))
+            print("Se determino jugar al modo aleatorio " + ",la dimension sera de: " + str(dimensionTablero) + " x " + str(dimensionTablero))
             return (dimensionTablero)
+
         else:
             validacionDeLaDimensionElegidaDelTablero = False
             print("Error")
@@ -67,22 +76,21 @@ def usuarioSeleccionoAleatorio(numeroDeOpcionElegida):
 def usuarioSeleccionoPredeterminado(numeroDeOpcionElegida):
     return numeroDeOpcionElegida == '2'
 
-def menu_de_inicio():
+def mostrarMenuDeInicio():
     """ Interfaz de inicio del juego para seleccionar entre modo aleatorio o predeterminado. Dentro del modo
     aleatorio se podrá seleccionar la dimension del tablero"""
+
     dimensionTablero = 0
-    validacionDeLaDimensionElegidaDelTablero = False
-    numeroDeLaDimensionDelTablero = 0
-    numeroDeOpcionElegida = 0
     modoDelJuego = 0
 
     mensaje_de_bienvenida()
     imprimirJugarSalir()
     ingresoDeOpcionJugarSalir()
     imprimirAleatorioPredeterminado()
-
     validacionDeIngresoDelModoDeJuego = False
+
     while(not validacionDeIngresoDelModoDeJuego):
+
         numeroDeOpcionElegida = input("Ingrese el numero correspondiente a la accion que desea realizar ")
 
         if(usuarioSeleccionoAleatorio(numeroDeOpcionElegida)):
@@ -101,6 +109,12 @@ def menu_de_inicio():
             validacionDeIngresoDelModoDeJuego = False
             print ("Error")
 
-    return (modoDelJuego,dimensionTablero)
+    ejecutarModoDeJuegoSeleccionado(modoDelJuego,dimensionTablero)
 
+def ejecutarModoDeJuegoSeleccionado(modoDelJuego,dimensionTablero):
 
+    if (modoDelJuego == "Predeterminado"):
+        prueba_solo_por_turnos.principalPredeterminado(dimensionTablero)
+
+    elif (modoDelJuego == "Aleatorio"):
+        prueba_solo_por_turnos.principalAleatorio(dimensionTablero)

@@ -2,16 +2,16 @@ def imprimirPuntajeDelNivel(puntajesPorNivel,nivel):
     print("El puntaje en el nivel es: "+str(puntajesPorNivel[nivel-1]))
 
 def calculoPuntajeTotal(puntajesPorNivel):
-    puntajeTotal=0
+    puntajeTotal = 0
     for i in puntajesPorNivel:
-        puntajeTotal=i+puntajeTotal
+        puntajeTotal = i+puntajeTotal
     return puntajeTotal
 
 def calculoPuntajeActual(ganoNivel,reinicioNivel,lucesRestantes):
     if (ganoNivel):
         return 500
 
-    elif (ganoNivel==False):
+    elif (ganoNivel == False):
         return (-300)
 
     if (reinicioNivel):
