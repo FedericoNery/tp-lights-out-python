@@ -22,14 +22,6 @@ def calculoDeLucesRestantes(tablero):
 def noSeGanoElJuego(nivelDelJuego,ganoJuego):
     return ((nivelDelJuego<=5) and (not ganoJuego))
 
-def muestroEnPantallaLosPuntajes(ganaNivel,nivel,reinicioElJuego,lucesRestantes,puntajesPorNivel):
-    puntajeActual = calculo_de_puntaje.calculoPuntajeActual(ganaNivel,reinicioElJuego,lucesRestantes)
-    puntajesPorNivel[nivel-1]=puntajesPorNivel[nivel-1]+puntajeActual
-    puntajeTotal=calculo_de_puntaje.calculoPuntajeTotal(puntajesPorNivel)
-    print("El puntaje en el nivel es: " + str(puntajesPorNivel[nivel-1]))
-    print("El puntaje total es de : " + str(puntajeTotal))
-
-
 def noSeGanoElNivel(movimientosRestantes,gananivel,lucesRestantes):
     return ((movimientosRestantes > 0) and (gananivel == None) and (lucesRestantes > 0))
 
