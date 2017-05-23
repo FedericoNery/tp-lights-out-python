@@ -1,5 +1,5 @@
 import sys
-import prueba_solo_por_turnos
+import logica_del_juego
 def mensaje_de_bienvenida():
     print("|- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -|")
     print("| B B B    I   E E E  NN    N V       V E E E  NN    N  I  D D D     O O O          A     |")
@@ -114,7 +114,7 @@ def mostrarMenuDeInicio():
 def ejecutarModoDeJuegoSeleccionado(modoDelJuego,dimensionTablero):
 
     if (modoDelJuego == "Predeterminado"):
-        prueba_solo_por_turnos.principalPredeterminado(dimensionTablero)
+        logica_del_juego.principalPredeterminado(dimensionTablero)
 
     elif (modoDelJuego == "Aleatorio"):
-        prueba_solo_por_turnos.principalAleatorio(dimensionTablero)
+        logica_del_juego.principalAleatorio(dimensionTablero)
