@@ -28,6 +28,45 @@ def ingresoDeOpcionJugarSalir():
         else:
             print("Error")
 
+def ingresoDeLaDimensionDelTablero():
+    validacionDeLaDimensionElegidaDelTablero = False
+    while (not validacionDeLaDimensionElegidaDelTablero):
+        numeroDeLaDimensionDelTablero = str(
+            input("Ingrese el numero correspondiente a la dimension del tablero en la que desea jugar "))
+
+        if (dimensionIngresadaDelTableroValida(numeroDeLaDimensionDelTablero)):
+            validacionDeLaDimensionElegidaDelTablero = True
+            dimensionTablero = int(numeroDeLaDimensionDelTablero)
+            print("Se determino jugar al modo aleatorio " + ",la dimension sera de: " + str(
+                dimensionTablero) + " x " + str(dimensionTablero))
+            return (dimensionTablero)
+        else:
+            validacionDeLaDimensionElegidaDelTablero = False
+            print("Error")
+
+def imprimirJugarSalir():
+    print("1.JUGAR ")
+    print("2.SALIR ")
+
+def imprimirAleatorioPredeterminado():
+    print("\n")
+    print("1.MODO ALEATORIO")
+    print("2.MODO PREDETERMINADO\n")
+
+def imprimirDimensionesTablerosAleatorios():
+    print("5. Tablero de 5x5")
+    print("6. Tablero de 6x6")
+    print("7. Tablero de 7x7")
+    print("8. Tablero de 8x8")
+    print("9. Tablero de 9x9")
+    print("10. Tablero de 10x10\n")
+
+def usuarioSeleccionoAleatorio(numeroDeOpcionElegida):
+    return numeroDeOpcionElegida == '1'
+
+def usuarioSeleccionoPredeterminado(numeroDeOpcionElegida):
+    return numeroDeOpcionElegida == '2'
+
 def menu_de_inicio():
     """ Interfaz de inicio del juego para seleccionar entre modo aleatorio o predeterminado. Dentro del modo
     aleatorio se podrá seleccionar la dimension del tablero"""
@@ -38,38 +77,21 @@ def menu_de_inicio():
     modoDelJuego = 0
 
     mensaje_de_bienvenida()
-    print("1.JUGAR ")
-    print("2.SALIR ")
-
+    imprimirJugarSalir()
     ingresoDeOpcionJugarSalir()
+    imprimirAleatorioPredeterminado()
 
-    print("\n")
-    print ("1.MODO ALEATORIO")
-    print ("2.MODO PREDETERMINADO\n")
     validacion = False
     while(validacion == False):
         numeroDeOpcionElegida = input("Ingrese el numero correspondiente a la accion que desea realizar ")
-        if(numeroDeOpcionElegida == '1'):
+
+        if(usuarioSeleccionoAleatorio(numeroDeOpcionElegida)):
             validacion = True
             modoDelJuego = "Aleatorio"
-            print ("5. Tablero de 5x5")
-            print ("6. Tablero de 6x6")
-            print ("7. Tablero de 7x7")
-            print ("8. Tablero de 8x8")
-            print ("9. Tablero de 9x9")
-            print ("10. Tablero de 10x10\n")
-            while(validacionDeLaDimensionElegidaDelTablero == False):
-                numeroDeLaDimensionDelTablero = str(input("Ingrese el numero correspondiente a la dimension del tablero en la que desea jugar "))
+            imprimirDimensionesTablerosAleatorios()
+            dimensionTablero = ingresoDeLaDimensionDelTablero()
 
-                if(dimensionIngresadaDelTableroValida(numeroDeLaDimensionDelTablero)):
-                    validacionDeLaDimensionElegidaDelTablero = True
-                    dimensionTablero = int(numeroDeLaDimensionDelTablero)
-                    print ("Se determino jugar al modo aleatorio "+",la dimension sera de: "+str(dimensionTablero)+" x "+str(dimensionTablero))
-                else:
-                    validacionDeLaDimensionElegidaDelTablero = False
-                    print ("Error")
-
-        elif(numeroDeOpcionElegida == '2'):
+        elif(usuarioSeleccionoPredeterminado(numeroDeOpcionElegida)):
             validacion = True
             print ("Se determino jugar al modo predeterminado \n")
             modoDelJuego = "Predeterminado"
