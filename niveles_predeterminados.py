@@ -1,6 +1,6 @@
 def niveles_predeterminados(nivelDelJuego):
-    tablero={}
-    if(nivelDelJuego==1):
+    tablero = {}
+    if(nivelDelJuego == 1):
         tablero["A1"] = 'O'
         tablero["A2"] = 'O'
         tablero["A3"] = '.'
@@ -26,7 +26,8 @@ def niveles_predeterminados(nivelDelJuego):
         tablero["E3"] = '.'
         tablero["E4"] = 'O'
         tablero["E5"] = 'O'
-    elif(nivelDelJuego==2):
+
+    elif(nivelDelJuego == 2):
         tablero["A1"] = '.'
         tablero["A2"] = 'O'
         tablero["A3"] = '.'
@@ -52,7 +53,8 @@ def niveles_predeterminados(nivelDelJuego):
         tablero["E3"] = '.'
         tablero["E4"] = 'O'
         tablero["E5"] = 'O'
-    elif(nivelDelJuego==3):
+
+    elif(nivelDelJuego == 3):
         tablero["A1"] = 'O'
         tablero["A2"] = 'O'
         tablero["A3"] = '.'
@@ -78,7 +80,8 @@ def niveles_predeterminados(nivelDelJuego):
         tablero["E3"] = '.'
         tablero["E4"] = '.'
         tablero["E5"] = '.'
-    elif(nivelDelJuego==4):
+
+    elif(nivelDelJuego == 4):
         tablero["A1"] = 'O'
         tablero["A2"] = '.'
         tablero["A3"] = 'O'
@@ -104,7 +107,8 @@ def niveles_predeterminados(nivelDelJuego):
         tablero["E3"] = 'O'
         tablero["E4"] = 'O'
         tablero["E5"] = '.'
-    elif(nivelDelJuego==5):
+
+    elif(nivelDelJuego == 5):
         tablero["A1"] = '.'
         tablero["A2"] = '.'
         tablero["A3"] = '.'
@@ -130,4 +134,5 @@ def niveles_predeterminados(nivelDelJuego):
         tablero["E3"] = '.'
         tablero["E4"] = '.'
         tablero["E5"] = '.'
+
     return(tablero)
