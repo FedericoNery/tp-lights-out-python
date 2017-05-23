@@ -10,7 +10,6 @@ def restablezcoTableroOriginalPredeterminado(nivelDelJuego):
     tablero = niveles_predeterminados.niveles_predeterminados(nivelDelJuego)
     return tablero
 
-
 def calculoDeLucesRestantes(tablero):
     cantidadDeLucesRestantes = 0
     estadosDeLucesDelTablero = tablero.values()
