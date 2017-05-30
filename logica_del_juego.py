@@ -71,7 +71,6 @@ def principalPredeterminado(dimensionDelTablero):
                 puntajeTotal = calculo_de_puntaje.calculoPuntajeTotal(puntajesPorNivel)
                 calculo_de_puntaje.imprimirPuntajeDelNivel(puntajesPorNivel, nivelDelJuego)
                 calculo_de_puntaje.imprimirPuntajeTotal(puntajeTotal)
-
                 reinicioDelJuego = False
             else:
                 tablero = modificadorTablero.modificoTablero(tablero,coordenadaIngresadaPorElUsuario)
@@ -102,7 +101,7 @@ def principalPredeterminado(dimensionDelTablero):
             puntajeActual = calculo_de_puntaje.calculoPuntajeActual(ganaNivel, reinicioDelJuego, lucesRestantes)
             puntajesPorNivel[nivelDelJuego - 1] = puntajeActual + puntajesPorNivel[nivelDelJuego - 1]
             puntajeTotal = calculo_de_puntaje.calculoPuntajeTotal(puntajesPorNivel)
-            ganaNivel = None
+            print("\n")
             calculo_de_puntaje.imprimirPuntajeTotal(puntajeTotal)
             calculo_de_puntaje.imprimirTodosLosPuntajesDeLosNiveles(puntajesPorNivel)
 
@@ -110,8 +109,7 @@ def principalPredeterminado(dimensionDelTablero):
             menu_de_inicio.mostrarMenuDeInicio()
 
     if (ganoJuego):
-        puntajeActual = calculo_de_puntaje.calculoPuntajeActual(ganaNivel,reinicioDelJuego,lucesRestantes)
-        puntajeTotal = calculo_de_puntaje.calculoPuntajeTotal(puntajesPorNivel)
+        print("\n")
         calculo_de_puntaje.imprimirTodosLosPuntajesDeLosNiveles(puntajesPorNivel)
         mensajes_del_juego.mensajeGanoJuego()
         menu_de_inicio.mostrarMenuDeInicio()
