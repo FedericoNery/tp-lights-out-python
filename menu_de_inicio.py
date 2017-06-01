@@ -1,7 +1,7 @@
 import sys
-import logica_del_juego
 import mensajes_del_juego
-
+import principal_modo_aleatorio
+import principal_modo_predeterminado
 
 def dimensionIngresadaDelTableroValida(numeroDeLaDimensionDelTablero):
     return ((numeroDeLaDimensionDelTablero == '5') or (numeroDeLaDimensionDelTablero == '6')or (numeroDeLaDimensionDelTablero == '7') or (numeroDeLaDimensionDelTablero == '8') or (numeroDeLaDimensionDelTablero == '9')or (numeroDeLaDimensionDelTablero=='10'))
@@ -50,9 +50,6 @@ def mostrarMenuDeInicio():
     """ Interfaz de inicio del juego para seleccionar entre modo aleatorio o predeterminado. Dentro del modo
     aleatorio se podrá seleccionar la dimension del tablero"""
 
-    dimensionTablero = 0
-    modoDelJuego = 0
-
     mensajes_del_juego.mensaje_de_bienvenida()
     imprimirOpcionesDeJuegoYOpcionSalir()
     validacionDeIngresoDelModoDeJuego = False
@@ -64,12 +61,12 @@ def mostrarMenuDeInicio():
         if(usuarioSeleccionoAleatorio(numeroDeOpcionElegida)):
             imprimirDimensionesTablerosAleatorios()
             dimensionTablero = ingresoDeLaDimensionDelTablero()
-            logica_del_juego.principalAleatorio(dimensionTablero)
+            principal_modo_aleatorio.principalAleatorio(dimensionTablero)
 
         elif(usuarioSeleccionoPredeterminado(numeroDeOpcionElegida)):
             print ("Se determino jugar al modo predeterminado \n")
             dimensionTablero = 5
-            logica_del_juego.principalPredeterminado(dimensionTablero)
+            principal_modo_predeterminado.principalPredeterminado(dimensionTablero)
 
         elif(usuarioSeleccionoSalir(numeroDeOpcionElegida)):
             sys.exit()
