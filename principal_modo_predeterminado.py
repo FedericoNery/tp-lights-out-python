@@ -14,7 +14,6 @@ def principalPredeterminado(dimensionDelTablero):
     puntajeActual = 0
     movimientosIniciales = 0
     puntajesPorNivel = [0,0,0,0,0]
-    contadorNivel = 0
 
     while(logica_del_juego.noSeGanoElJuego(nivelDelJuego,ganoJuego)):
 
@@ -48,7 +47,7 @@ def principalPredeterminado(dimensionDelTablero):
             else:
                 tablero = modificadorTablero.modificoTablero(tablero,coordenadaIngresadaPorElUsuario)
                 mostrar_tablero.imprimirTablero(tablero, dimensionDelTablero)
-                movimientosRestantes = movimientosRestantes-1
+                movimientosRestantes = movimientosRestantes - 1
                 print("MOVIMIENTOS RESTANTES: " + str(movimientosRestantes) + "/" + str(movimientosIniciales))
                 lucesRestantes = logica_del_juego.calculoDeLucesRestantes(tablero)
 
