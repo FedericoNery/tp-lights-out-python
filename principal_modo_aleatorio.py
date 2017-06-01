@@ -4,6 +4,9 @@ import ingreso_de_casilla
 import calculo_de_puntaje
 import modificadorTablero
 import mensajes_del_juego
+import logica_del_juego
+import menu_de_inicio
+
 def principalAleatorio(dimensionDelTablero):
     nivelDelJuego = 1
     reinicioDelJuego = False
@@ -24,21 +27,21 @@ def principalAleatorio(dimensionDelTablero):
         movimientosRestantes = dimensionDelTablero*3
         movimientosIniciales = movimientosRestantes
         print("MOVIMIENTOS RESTANTES: " + str(movimientosRestantes) + "/" + str(movimientosIniciales))
-        lucesRestantes = calculoDeLucesRestantes(tablero)
+        lucesRestantes = logica_del_juego.calculoDeLucesRestantes(tablero)
 
         while((movimientosRestantes > 0) and (ganaNivel == None) and (lucesRestantes > 0)):
 
             coordenadaIngresadaPorElUsuario = ingreso_de_casilla.validacionIngresoDeCasillero(dimensionDelTablero)
 
             if (coordenadaIngresadaPorElUsuario == "REINICIO"):
-                lucesRestantes = calculoDeLucesRestantes(tablero)
+                lucesRestantes = logica_del_juego.calculoDeLucesRestantes(tablero)
                 reinicioDelJuego = True
                 puntajeActual = calculo_de_puntaje.calculoPuntajeActual(ganaNivel, reinicioDelJuego, lucesRestantes)
 
                 movimientosRestantes = dimensionDelTablero * 3
                 tablero = tableroOriginal
                 mostrar_tablero.imprimirTablero(tablero, dimensionDelTablero)
-                lucesRestantes = calculoDeLucesRestantes(tablero)
+                lucesRestantes = logica_del_juego.calculoDeLucesRestantes(tablero)
                 print("MOVIMIENTOS RESTANTES: " + str(movimientosRestantes) + "/" + str(movimientosIniciales))
 
             else:
@@ -46,7 +49,7 @@ def principalAleatorio(dimensionDelTablero):
                 mostrar_tablero.imprimirTablero(tablero, dimensionDelTablero)
                 movimientosRestantes = movimientosRestantes - 1
                 print("MOVIMIENTOS RESTANTES: " + str(movimientosRestantes) + "/" + str(movimientosIniciales))
-                lucesRestantes = calculoDeLucesRestantes(tablero)
+                lucesRestantes = logica_del_juego.calculoDeLucesRestantes(tablero)
 
                 if(lucesRestantes == 0):
                     ganaNivel = True

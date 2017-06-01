@@ -2,7 +2,10 @@ import niveles_predeterminados
 import mostrar_tablero
 import calculo_de_puntaje
 import mensajes_del_juego
-
+import logica_del_juego
+import ingreso_de_casilla
+import menu_de_inicio
+import modificadorTablero
 
 def principalPredeterminado(dimensionDelTablero):
     nivelDelJuego = 1
@@ -13,7 +16,7 @@ def principalPredeterminado(dimensionDelTablero):
     puntajesPorNivel = [0,0,0,0,0]
     contadorNivel = 0
 
-    while(noSeGanoElJuego(nivelDelJuego,ganoJuego)):
+    while(logica_del_juego.noSeGanoElJuego(nivelDelJuego,ganoJuego)):
 
         print("NIVEL " + str(nivelDelJuego)+"\n")
         ganaNivel = None
@@ -23,16 +26,16 @@ def principalPredeterminado(dimensionDelTablero):
         movimientosRestantes = dimensionDelTablero * 3
         movimientosIniciales = movimientosRestantes
         print("MOVIMIENTOS RESTANTES: " + str(movimientosRestantes) + "/" + str(movimientosIniciales))
-        lucesRestantes = calculoDeLucesRestantes(tablero)
+        lucesRestantes = logica_del_juego.calculoDeLucesRestantes(tablero)
 
-        while(noSeGanoElNivel(movimientosRestantes,ganaNivel,lucesRestantes)):
+        while(logica_del_juego.noSeGanoElNivel(movimientosRestantes,ganaNivel,lucesRestantes)):
 
             coordenadaIngresadaPorElUsuario = ingreso_de_casilla.validacionIngresoDeCasillero(dimensionDelTablero)
 
             if (coordenadaIngresadaPorElUsuario == "REINICIO"):
-                lucesRestantes = calculoDeLucesRestantes(tablero)
+                lucesRestantes = logica_del_juego.calculoDeLucesRestantes(tablero)
                 reinicioDelJuego = True
-                tablero = restablezcoTableroOriginalPredeterminado(nivelDelJuego)
+                tablero = logica_del_juego.restablezcoTableroOriginalPredeterminado(nivelDelJuego)
                 mostrar_tablero.imprimirTablero(tablero, dimensionDelTablero)
                 movimientosRestantes = dimensionDelTablero * 3
                 print("MOVIMIENTOS RESTANTES: " + str(movimientosRestantes) + "/" + str(movimientosIniciales))
@@ -47,11 +50,11 @@ def principalPredeterminado(dimensionDelTablero):
                 mostrar_tablero.imprimirTablero(tablero, dimensionDelTablero)
                 movimientosRestantes = movimientosRestantes-1
                 print("MOVIMIENTOS RESTANTES: " + str(movimientosRestantes) + "/" + str(movimientosIniciales))
-                lucesRestantes = calculoDeLucesRestantes(tablero)
+                lucesRestantes = logica_del_juego.calculoDeLucesRestantes(tablero)
 
-                if(noQuedanLucesPrendidas(lucesRestantes)):
+                if(logica_del_juego.noQuedanLucesPrendidas(lucesRestantes)):
                     ganaNivel = True
-                elif(siQuedanLucesPrendidasYNoQuedanMovimientos(lucesRestantes,movimientosRestantes)):
+                elif(logica_del_juego.siQuedanLucesPrendidasYNoQuedanMovimientos(lucesRestantes,movimientosRestantes)):
                     ganaNivel = False
 
         if(ganaNivel):
@@ -67,7 +70,7 @@ def principalPredeterminado(dimensionDelTablero):
             else:
                 nivelDelJuego = nivelDelJuego+1
 
-        if(perdioElNivel(movimientosRestantes,ganaNivel)):
+        if(logica_del_juego.perdioElNivel(movimientosRestantes,ganaNivel)):
             puntajeActual = calculo_de_puntaje.calculoPuntajeActual(ganaNivel, reinicioDelJuego, lucesRestantes)
             puntajesPorNivel[nivelDelJuego - 1] = puntajeActual + puntajesPorNivel[nivelDelJuego - 1]
             puntajeTotal = calculo_de_puntaje.calculoPuntajeTotal(puntajesPorNivel)
