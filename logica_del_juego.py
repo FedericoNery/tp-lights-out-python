@@ -1,11 +1,4 @@
-import menu_de_inicio
-import ingreso_de_casilla
-import modificadorTablero
-import mostrar_tablero
 import niveles_predeterminados
-import niveles_aleatorios
-import calculo_de_puntaje
-import mensajes_del_juego
 
 def restablezcoTableroOriginalPredeterminado(nivelDelJuego):
     tablero = niveles_predeterminados.niveles_predeterminados(nivelDelJuego)
@@ -33,4 +26,8 @@ def noQuedanLucesPrendidas(lucesRestantes):
 
 def siQuedanLucesPrendidasYNoQuedanMovimientos(lucesRestantes,movimientosRestantes):
     return ((lucesRestantes > 0) and (movimientosRestantes == 0))
+
+def ganoElJuego(nivelDelJuego,lucesRestantes):
+    return nivelDelJuego==5 and lucesRestantes==0
+
 
