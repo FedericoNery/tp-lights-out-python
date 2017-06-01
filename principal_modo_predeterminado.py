@@ -52,12 +52,8 @@ def principalPredeterminado(dimensionDelTablero):
                 print("MOVIMIENTOS RESTANTES: " + str(movimientosRestantes) + "/" + str(movimientosIniciales))
                 lucesRestantes = logica_del_juego.calculoDeLucesRestantes(tablero)
 
-                if(logica_del_juego.noQuedanLucesPrendidas(lucesRestantes)):
-                    ganaNivel = True
-                elif(logica_del_juego.siQuedanLucesPrendidasYNoQuedanMovimientos(lucesRestantes,movimientosRestantes)):
-                    ganaNivel = False
-
-        if(ganaNivel):
+        if(logica_del_juego.noQuedanLucesPrendidas(lucesRestantes)):
+            ganaNivel = True
             mensajes_del_juego.mensajeGanoNivel()
             puntajeActual = calculo_de_puntaje.calculoPuntajeActual(ganaNivel,reinicioDelJuego,lucesRestantes)
             puntajesPorNivel[nivelDelJuego-1] = puntajeActual+puntajesPorNivel[nivelDelJuego-1]
@@ -65,10 +61,10 @@ def principalPredeterminado(dimensionDelTablero):
             calculo_de_puntaje.imprimirPuntajeTotal(puntajeTotal)
             calculo_de_puntaje.imprimirPuntajeDelNivel(puntajesPorNivel,nivelDelJuego)
 
-            if(nivelDelJuego == 5):
-                ganoJuego = True
-            else:
+            if(not logica_del_juego.ganoElJuego(nivelDelJuego,lucesRestantes)):
                 nivelDelJuego = nivelDelJuego+1
+            else:
+                ganoJuego = True
 
         if(logica_del_juego.perdioElNivel(movimientosRestantes,ganaNivel)):
             puntajeActual = calculo_de_puntaje.calculoPuntajeActual(ganaNivel, reinicioDelJuego, lucesRestantes)
@@ -81,7 +77,7 @@ def principalPredeterminado(dimensionDelTablero):
             mensajes_del_juego.mensajePerdiste()
             menu_de_inicio.mostrarMenuDeInicio()
 
-    if (ganoJuego):
+    if (logica_del_juego.ganoElJuego(nivelDelJuego,lucesRestantes)):
         print("\n")
         calculo_de_puntaje.imprimirTodosLosPuntajesDeLosNiveles(puntajesPorNivel)
         mensajes_del_juego.mensajeGanoJuego()
