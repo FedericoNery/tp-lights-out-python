@@ -2,7 +2,7 @@ import niveles_aleatorios
 import mostrar_tablero
 import ingreso_de_casilla
 import calculo_de_puntaje
-import modificadorTablero
+import modificador_tablero
 import mensajes_del_juego
 import logica_del_juego
 import menu_de_inicio
@@ -50,7 +50,7 @@ def principalAleatorio(dimensionDelTablero):
 
 
             else:
-                tablero = modificadorTablero.modificoTablero(tablero, coordenadaIngresadaPorElUsuario)
+                tablero = modificador_tablero.modificoTablero(tablero, coordenadaIngresadaPorElUsuario)
                 mostrar_tablero.imprimirTablero(tablero, dimensionDelTablero)
                 movimientosRestantes = movimientosRestantes - 1
                 print("MOVIMIENTOS RESTANTES: " + str(movimientosRestantes) + "/" + str(movimientosIniciales))

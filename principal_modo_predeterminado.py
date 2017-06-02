@@ -5,7 +5,7 @@ import mensajes_del_juego
 import logica_del_juego
 import ingreso_de_casilla
 import menu_de_inicio
-import modificadorTablero
+import modificador_tablero
 
 def principalPredeterminado(dimensionDelTablero):
     nivelDelJuego = 1
@@ -45,7 +45,7 @@ def principalPredeterminado(dimensionDelTablero):
                 calculo_de_puntaje.imprimirPuntajeTotal(puntajeTotal)
                 reinicioDelJuego = False
             else:
-                tablero = modificadorTablero.modificoTablero(tablero,coordenadaIngresadaPorElUsuario)
+                tablero = modificador_tablero.modificoTablero(tablero, coordenadaIngresadaPorElUsuario)
                 mostrar_tablero.imprimirTablero(tablero, dimensionDelTablero)
                 movimientosRestantes = movimientosRestantes - 1
                 print("MOVIMIENTOS RESTANTES: " + str(movimientosRestantes) + "/" + str(movimientosIniciales))
