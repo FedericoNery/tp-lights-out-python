@@ -1,28 +1,24 @@
 import unittest
 import ingreso_de_casilla
 
-
 class ValidacionIngresoDeCasilleroTestCase(unittest.TestCase):
-    def test_ingresoDimensionDelTablero(self):
+    def test_ingresoDimensionDelTableroNumeroCorrecto(self):
         self.assertTrue(ingreso_de_casilla.validacionIngresoDeCasillero(5))
 
-    def test_ingresoDimensionDelTablero(self):
+    def test_ingresoDimensionDelTableroNumeroNegativo(self):
         self.assertTrue(ingreso_de_casilla.validacionIngresoDeCasillero(-1))
 
-    def test_ingresoDimensionDelTablero(self):
+    def test_ingresoDimensionDelTableroListaVacia(self):
         self.assertTrue(ingreso_de_casilla.validacionIngresoDeCasillero([]))
 
-    def test_ingresoDimensionDelTablero(self):
+    def test_ingresoDimensionDelTableroNumeroCero(self):
         self.assertTrue(ingreso_de_casilla.validacionIngresoDeCasillero(0))
 
-    def test_ingresoDimensionDelTablero(self):
+    def test_ingresoDimensionDelTableroStringVacio(self):
         self.assertTrue(ingreso_de_casilla.validacionIngresoDeCasillero(""))
 
-    def test_ingresoDimensionDelTablero(self):
+    def test_ingresoDimensionDelTableroStringConLetras(self):
         self.assertTrue(ingreso_de_casilla.validacionIngresoDeCasillero("AAA"))
-
-
-
 
 class LongitudDeCoordenadaValidaTestCase(unittest.TestCase):
     def test_pasoComoParametroUnSoloNumero(self):
