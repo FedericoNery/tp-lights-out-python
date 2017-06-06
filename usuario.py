@@ -7,3 +7,6 @@ def pasarDeNivel(nivelDelJuego):
 def calculoPuntajeActual(puntosObtenidos):
     return puntajeActual+puntosObtenidos
 
+def devuelvoNivelActualDelJuego():
+    return nivelDelJuego
+
