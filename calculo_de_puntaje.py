@@ -7,17 +7,19 @@ def calculoPuntajeTotal(puntajesPorNivel):
         puntajeTotal = i+puntajeTotal
     return puntajeTotal
 
-def calculoPuntajeActual(ganoNivel,reinicioNivel,lucesRestantes):
+def calculoPuntajeActual(ganoNivel):
     if (ganoNivel):
         return 500
 
     elif (ganoNivel == False):
         return (-300)
 
-    if (reinicioNivel):
-        return (-50*lucesRestantes)
 
-def imprimirPuntajeTotal(puntajeTotal):
+def calcularPuntajePorReinicio(lucesRestantes):
+    return (-50*lucesRestantes)
+
+def imprimirPuntajeTotal(puntajesPorNivel):
+    puntajeTotal = puntajesPorNivel[0] + puntajesPorNivel[1] + puntajesPorNivel[2] + puntajesPorNivel[3] + puntajesPorNivel[4]
     print("El puntaje total es de: " + str(puntajeTotal))
 
 def imprimirTodosLosPuntajesDeLosNiveles(puntajesPorNivel):
