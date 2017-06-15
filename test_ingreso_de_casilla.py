@@ -1,7 +1,7 @@
 import unittest
 import ingreso_de_casilla
 
-class ValidacionIngresoDeCasilleroTestCase(unittest.TestCase):
+"""class ValidacionIngresoDeCasilleroTestCase(unittest.TestCase):
     def test_ingresoDimensionDelTableroNumeroCorrecto(self):
         self.assertTrue(ingreso_de_casilla.validacionIngresoDeCasillero(5))
 
@@ -18,9 +18,21 @@ class ValidacionIngresoDeCasilleroTestCase(unittest.TestCase):
         self.assertTrue(ingreso_de_casilla.validacionIngresoDeCasillero(""))
 
     def test_ingresoDimensionDelTableroStringConLetras(self):
-        self.assertTrue(ingreso_de_casilla.validacionIngresoDeCasillero("AAA"))
+        self.assertTrue(ingreso_de_casilla.validacionIngresoDeCasillero("AAA"))"""
 
 class LongitudDeCoordenadaValidaTestCase(unittest.TestCase):
+    def test_ConfirmaLaExtensionDelInputDelUsuario(self):
+        self.assertTrue(ingreso_de_casilla.longitudDeCoordenadaValida("a2"))
+
+class IngresoDeCoordenadaEsReinicioTestCase(unittest.TestCase):
+    def test_ConfirmaElIngresoEsperado(self):
+        self.assertEqual(ingreso_de_casilla.ingresoDeCoordenadaEsReinicio("REINICIO"),True)
+
+class LetraDeCoordenadaValidaTestCase(unittest.TestCase):
+    def test_ConfirmaQueLaLetraIngresadaSeaValida(self):
+        self.assertTrue(ingreso_de_casilla.letraDeCoordenadaValida("A2",'F'))
+
+"""
     def test_pasoComoParametroUnSoloNumero(self):
         self.assertFalse(ingreso_de_casilla.longitudDeCoordenadaValida(5))
 
@@ -79,3 +91,4 @@ class letraDeCoordenadaValidaTestCase(unittest.TestCase):
 
     def test_pasoComoParametroUnNumero(self):
         self.assertEquals(ingreso_de_casilla.letraDeCoordenadaValida(1,1))
+"""
