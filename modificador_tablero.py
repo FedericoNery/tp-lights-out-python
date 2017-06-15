@@ -20,6 +20,3 @@ def modificoTablero(tablero, ingresoCoordenadaDelUsuario):
                 tablero[coordenada] = 'O'
 
     return (tablero)
-
-
-

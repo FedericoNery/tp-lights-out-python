@@ -30,7 +30,8 @@ class IngresoDeCoordenadaEsReinicioTestCase(unittest.TestCase):
 
 class LetraDeCoordenadaValidaTestCase(unittest.TestCase):
     def test_ConfirmaQueLaLetraIngresadaSeaValida(self):
-        self.assertTrue(ingreso_de_casilla.letraDeCoordenadaValida("A2",'F'))
+        ingreso_de_casilla.letraUltimaColumnaDelTablero = 'F'
+        self.assertTrue(ingreso_de_casilla.letraDeCoordenadaValida("A2"))
 
 """
     def test_pasoComoParametroUnSoloNumero(self):

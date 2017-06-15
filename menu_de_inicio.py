@@ -15,7 +15,6 @@ def ingresoDeLaDimensionDelTablero():
         numeroDeLaDimensionDelTablero = str(input("Ingrese el numero correspondiente a la dimension del tablero en la que desea jugar "))
 
         if (dimensionIngresadaDelTableroValida(numeroDeLaDimensionDelTablero)):
-            validacionDeLaDimensionElegidaDelTablero = True
             dimensionTablero = int(numeroDeLaDimensionDelTablero)
             print("Se determino jugar al modo aleatorio " + ",la dimension sera de: " + str(dimensionTablero) + " x " + str(dimensionTablero))
             return (dimensionTablero)
@@ -73,4 +72,3 @@ def mostrarMenuDeInicio():
         else:
             validacionDeIngresoDelModoDeJuego = False
             print ("Error")
-
