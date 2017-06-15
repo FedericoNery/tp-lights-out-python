@@ -19,7 +19,7 @@ def noSeGanoElNivel(movimientosRestantes,gananivel,lucesRestantes):
     return ((movimientosRestantes > 0) and (gananivel == None) and (lucesRestantes > 0))
 
 def perdioElNivel(movimientosRestantes,gananivel):
-    return ((movimientosRestantes == 0) and (gananivel == False))
+    return ((movimientosRestantes == 0) and (gananivel == None))
 
 def noQuedanLucesPrendidas(lucesRestantes):
     return lucesRestantes == 0
@@ -29,5 +29,3 @@ def siQuedanLucesPrendidasYNoQuedanMovimientos(lucesRestantes,movimientosRestant
 
 def ganoElJuego(nivelDelJuego,lucesRestantes):
     return nivelDelJuego==5 and lucesRestantes==0
-
-
