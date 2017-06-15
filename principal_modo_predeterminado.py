@@ -11,7 +11,6 @@ def principalPredeterminado(dimensionDelTablero):
     nivelDelJuego = 1
     reinicioDelJuego = False
     ganoJuego = False
-    puntajeActual = 0
     puntajesPorNivel = [0,0,0,0,0]
 
     while(logica_del_juego.noSeGanoElJuego(nivelDelJuego,ganoJuego)):
@@ -47,8 +46,7 @@ def principalPredeterminado(dimensionDelTablero):
         if(logica_del_juego.noQuedanLucesPrendidas(lucesRestantes)):
             ganaNivel = True
             mensajes_del_juego.mensajeGanoNivel()
-            puntajeActual = calculo_de_puntaje.calculoPuntajeActual(ganaNivel)
-            puntajesPorNivel[nivelDelJuego-1] = puntajeActual+puntajesPorNivel[nivelDelJuego-1]
+            puntajesPorNivel[nivelDelJuego-1] += calculo_de_puntaje.calculoPuntajeActual(ganaNivel)
             calculo_de_puntaje.imprimirPuntajeTotal(puntajesPorNivel)
             calculo_de_puntaje.imprimirPuntajeDelNivel(puntajesPorNivel,nivelDelJuego)
 
