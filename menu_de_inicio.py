@@ -2,6 +2,7 @@ import sys
 import mensajes_del_juego
 import principal_modo_aleatorio
 import principal_modo_predeterminado
+import error_logger
 
 def dimensionIngresadaDelTableroValida(numeroDeLaDimensionDelTablero):
     return ((numeroDeLaDimensionDelTablero == '5') or (numeroDeLaDimensionDelTablero == '6')or (numeroDeLaDimensionDelTablero == '7') or (numeroDeLaDimensionDelTablero == '8') or (numeroDeLaDimensionDelTablero == '9')or (numeroDeLaDimensionDelTablero=='10'))
@@ -21,6 +22,7 @@ def ingresoDeLaDimensionDelTablero():
 
         else:
             validacionDeLaDimensionElegidaDelTablero = False
+            error_logger.guardarArchivo("Se ingreso mal la dimension del tablero. Valor de Ingreso: " + numeroDeLaDimensionDelTablero)
             print("Error")
 
 def imprimirOpcionesDeJuegoYOpcionSalir():
@@ -68,7 +70,9 @@ def mostrarMenuDeInicio():
             principal_modo_predeterminado.principalPredeterminado(dimensionTablero)
 
         elif(usuarioSeleccionoSalir(numeroDeOpcionElegida)):
+            error_logger.cerrar()
             sys.exit()
         else:
             validacionDeIngresoDelModoDeJuego = False
+            error_logger.guardar("Se ingreso mal el numero de opcion del menu. Valor de Ingreso: "+ numeroDeOpcionElegida)
             print ("Error")

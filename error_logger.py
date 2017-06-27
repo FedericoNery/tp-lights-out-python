@@ -1,10 +1,18 @@
 import log
 
-def abrirArchivo():
-    log.abrir("errores.txt")
+archivo_log = None
 
-def guardarArchivo(texto):
-    log.guardar("errores.txt",texto)
+def abrir():
+    global archivo_log
+    archivo_log = log.abrir("errores.txt")
 
-def cerrarArchivo(archivo_log):
+def guardar(texto):
+    global archivo_log
+    log.guardar(archivo_log,texto)
+
+def cerrar():
+    global archivo_log
     log.cerrar(archivo_log)
+
+abrir()
+

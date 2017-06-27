@@ -1,5 +1,7 @@
+import error_logger
 numeroUltimaFilaDelTablero = ""
 letraUltimaColumnaDelTablero = ""
+
 
 def validacionIngresoDeCasillero(dimensionTablero):
     """Recibe el parametro que indica la dimension del tablero. El usuario procede al ingreso de la casilla, luego
@@ -23,6 +25,7 @@ def validacionIngresoDeCasillero(dimensionTablero):
 
         else:
             ingresoDeCoordenada = False
+            error_logger.guardar('Se ingreso mal la coordenada del tablero o la opcion de "Reinicio" . Valor de Ingreso: '+ coordenadaDelUsuario)
             print ("Error ")
 
 def longitudDeCoordenadaValida(coordenadaDelUsuario):
