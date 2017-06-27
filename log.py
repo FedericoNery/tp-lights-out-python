@@ -22,5 +22,5 @@ def cerrar(archivo_log):
     """ Cierra el archivo de log.
     Pre: el archivo de log ha sido abierto correctamente.
     Post: el archivo de log se ha cerrado. """
-    guardar_log(archivo_log, "Fin del registro de errores")
+    guardar(archivo_log, "Fin del registro de errores")
     archivo_log.close()
