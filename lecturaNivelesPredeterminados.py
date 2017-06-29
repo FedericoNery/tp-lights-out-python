@@ -1,7 +1,4 @@
 from nivelesPredeterminados_logger import archivo_log
-import nivelesPredeterminados_logger
-import mostrar_tablero
-global tablero
 global dimensionTableroTxt
 global nivelDelJuego
 
@@ -45,6 +42,7 @@ def generarTablero(nivelDelJuego):
             datoDelArchivo = extraerDatoDelArchivo(linea)
             armarDiccionarioConEstadosDeLuces(datoDelArchivo,nivelDelJuego)
     return tablero
+
 
 #generarTablero(2)
 #print(tablero)
