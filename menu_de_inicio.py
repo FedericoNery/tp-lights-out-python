@@ -66,8 +66,9 @@ def mostrarMenuDeInicio():
 
         elif(usuarioSeleccionoPredeterminado(numeroDeOpcionElegida)):
             print ("Se determino jugar al modo predeterminado \n")
-            dimensionTablero = 5
-            principal_modo_predeterminado.principalPredeterminado(dimensionTablero)
+            #dimensionTablero = 5
+            principal_modo_predeterminado.principalPredeterminado()
+            #principal_modo_predeterminado.principalPredeterminado(dimensionTablero)
 
         elif(usuarioSeleccionoSalir(numeroDeOpcionElegida)):
             error_logger.cerrar()
