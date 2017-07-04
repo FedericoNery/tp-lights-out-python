@@ -1,15 +1,15 @@
-from nivelesPredeterminados_logger import archivo_log
-global dimensionTableroTxt
-global nivelDelJuego
+import nivelesPredeterminados_logger
 
-def devolverDimensionDelTablero():
+def devolverDimensionDelTablero(nivelDelJuego):
+    dimensionTablero = 0
     contador = 0
-    for linea in archivo_log:
+    for linea in nivelesPredeterminados_logger.archivo_log:
         contador = contador + 1
         if(contador>2):
             #print(linea)
             datoDelArchivo = extraerDatoDelArchivo(linea)
-            dimensionTablero = datoDelArchivo[3]
+            if(str(nivelDelJuego) == datoDelArchivo[0]):
+                dimensionTablero = datoDelArchivo[3]
     return dimensionTablero
 
 def extraerDatoDelArchivo(linea):
@@ -35,7 +35,8 @@ def generarTablero(nivelDelJuego):
     global tablero
     tablero = {}
     contador = 0
-    for linea in archivo_log:
+    nivelesPredeterminados_logger.archivo_log.seek(0)
+    for linea in nivelesPredeterminados_logger.archivo_log:
         contador = contador + 1
         if(contador>2):
             #print(linea)
@@ -44,8 +45,7 @@ def generarTablero(nivelDelJuego):
     return tablero
 
 
-#generarTablero(2)
-#print(tablero)
+
 #mostrar_tablero.imprimirTablero(tablero,int(dimensionTableroTxt))
 #nivelesPredeterminados_logger.cerrar()
 

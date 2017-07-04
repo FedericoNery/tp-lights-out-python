@@ -6,6 +6,7 @@ import logica_del_juego
 import ingreso_de_casilla
 import menu_de_inicio
 import modificador_tablero
+import nivelesPredeterminados_logger
 import lecturaNivelesPredeterminados
 
 def principalPredeterminado():
@@ -13,7 +14,7 @@ def principalPredeterminado():
     reinicioDelJuego = False
     ganoJuego = False
     puntajesPorNivel = [0,0,0,0,0]
-    dimensionDelTablero = lecturaNivelesPredeterminados.devolverDimensionDelTablero()
+    dimensionDelTablero = lecturaNivelesPredeterminados.devolverDimensionDelTablero(nivelDelJuego)
     dimensionDelTablero = int(dimensionDelTablero)
 
     while(logica_del_juego.noSeGanoElJuego(nivelDelJuego,ganoJuego)):

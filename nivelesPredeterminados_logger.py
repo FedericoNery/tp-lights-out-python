@@ -13,5 +13,3 @@ def guardar(texto):
 def cerrar():
     global archivo_log
     logNivelesPredeterminados.cerrar(archivo_log)
-
-abrir()
